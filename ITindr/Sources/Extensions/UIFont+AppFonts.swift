@@ -8,6 +8,7 @@ extension UIFont {
   }
   
   static let body16 = UIFont.boldAppFont(ofSize: 16)
+  static let body24 = UIFont.boldAppFont(ofSize: 24)
   
   static func appFont(ofSize size: CGFloat) -> UIFont {
     guard let font = UIFont(name: FontNames.regular, size: size) else {

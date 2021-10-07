@@ -4,6 +4,8 @@ import SnapKit
 final class WelcomeViewController: UIViewController {
   // MARK: - Properties
   
+  private let viewModel: WelcomeViewModelProtocol
+  
   private let contentView: UIView = {
     let item = UIView()
     return item
@@ -57,6 +59,27 @@ final class WelcomeViewController: UIViewController {
     setup()
   }
   
+  // MARK: - Init
+  
+  init(viewModel: WelcomeViewModelProtocol) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  @objc
+  private func showSignup() {
+    viewModel.showSignup()
+  }
+  
+  @objc
+  private func showLogin() {
+    viewModel.showLogin()
+  }
+  
   // MARK: - Private Methods
   
   private func setup() {
@@ -95,6 +118,8 @@ final class WelcomeViewController: UIViewController {
     }
     loginButton.layoutIfNeeded()
     
+    loginButton.addTarget(self, action: #selector(showLogin), for: .touchUpInside)
+    
     contentView.addSubview(signupButton)
     signupButton.snp.makeConstraints { make in
       make.leading.trailing.equalToSuperview().inset(16)
@@ -102,6 +127,8 @@ final class WelcomeViewController: UIViewController {
       make.height.equalTo(56)
     }
     signupButton.layoutIfNeeded()
+    
+    signupButton.addTarget(self, action: #selector(showSignup), for: .touchUpInside)
   }
   
   private func setupContentView() {

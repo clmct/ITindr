@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B29533F270ED5A400AC3DA7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29533E270ED5A400AC3DA7 /* LoginViewController.swift */; };
+		8B295341270ED62500AC3DA7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295340270ED62500AC3DA7 /* LoginViewModel.swift */; };
+		8B295343270ED71000AC3DA7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295342270ED71000AC3DA7 /* AuthCoordinator.swift */; };
+		8B295345270ED78600AC3DA7 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295344270ED78600AC3DA7 /* WelcomeViewModel.swift */; };
+		8B295348270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */; };
+		8B29534A270EEDCD00AC3DA7 /* AvatarComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295349270EEDCD00AC3DA7 /* AvatarComponentView.swift */; };
 		B22DC578270CB51500FB0F76 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22DC576270CB51500FB0F76 /* Montserrat-Regular.ttf */; };
 		B22DC579270CB51500FB0F76 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22DC577270CB51500FB0F76 /* Montserrat-Bold.ttf */; };
 		B289D2FD270B6AF600CE810B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289D2FC270B6AF600CE810B /* AppDelegate.swift */; };
@@ -28,6 +34,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B29533E270ED5A400AC3DA7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8B295340270ED62500AC3DA7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8B295342270ED71000AC3DA7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		8B295344270ED78600AC3DA7 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDescriptionViewController.swift; sourceTree = "<group>"; };
+		8B295349270EEDCD00AC3DA7 /* AvatarComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarComponentView.swift; sourceTree = "<group>"; };
 		B22DC576270CB51500FB0F76 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		B22DC577270CB51500FB0F76 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		B289D2F9270B6AF600CE810B /* ITindr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITindr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +73,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B29533D270ED59000AC3DA7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8B29533E270ED5A400AC3DA7 /* LoginViewController.swift */,
+				8B295340270ED62500AC3DA7 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		8B295346270EEC5100AC3DA7 /* ProfileDescription */ = {
+			isa = PBXGroup;
+			children = (
+				8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */,
+				8B295349270EEDCD00AC3DA7 /* AvatarComponentView.swift */,
+			);
+			path = ProfileDescription;
+			sourceTree = "<group>";
+		};
 		B22DC574270CB4C900FB0F76 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +168,10 @@
 		B289D317270B6E5800CE810B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8B295346270EEC5100AC3DA7 /* ProfileDescription */,
 				B289D319270B784200CE810B /* Components */,
+				8B295342270ED71000AC3DA7 /* AuthCoordinator.swift */,
+				8B29533D270ED59000AC3DA7 /* Login */,
 				B2A786CF270CD50C00D7704A /* Signup */,
 				B2D95706270BA2D4003A067E /* Welcome */,
 			);
@@ -186,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				B289D300270B6AF600CE810B /* WelcomeViewController.swift */,
+				8B295344270ED78600AC3DA7 /* WelcomeViewModel.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -268,11 +302,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B29533F270ED5A400AC3DA7 /* LoginViewController.swift in Sources */,
 				B289D311270B6C1200CE810B /* AppCoordinator.swift in Sources */,
 				B2A786CE270CCEF900D7704A /* CustomTextField.swift in Sources */,
 				B289D323270B852200CE810B /* UIColor+ HEX.swift in Sources */,
 				B289D31B270B787B00CE810B /* ButtonFactory.swift in Sources */,
 				B289D301270B6AF600CE810B /* WelcomeViewController.swift in Sources */,
+				8B295343270ED71000AC3DA7 /* AuthCoordinator.swift in Sources */,
+				8B295341270ED62500AC3DA7 /* LoginViewModel.swift in Sources */,
+				8B295345270ED78600AC3DA7 /* WelcomeViewModel.swift in Sources */,
+				8B295348270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift in Sources */,
 				B289D313270B6C3600CE810B /* CoordinatorProtocol.swift in Sources */,
 				B289D329270B883700CE810B /* Logger.swift in Sources */,
 				B289D325270B85D700CE810B /* UIColor+AppColors.swift in Sources */,
@@ -280,6 +319,7 @@
 				B2A786D7270CD5D800D7704A /* SignupViewModel.swift in Sources */,
 				B289D321270B81F000CE810B /* UIView+Gradient.swift in Sources */,
 				B289D327270B860A00CE810B /* UIFont+AppFonts.swift in Sources */,
+				8B29534A270EEDCD00AC3DA7 /* AvatarComponentView.swift in Sources */,
 				B289D2FD270B6AF600CE810B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,8 +3,8 @@ import UIKit
 final class CustomTextFiled: UIView {
   // MARK: - Properties
   
+  let textField = UITextField()
   private let backgroundView = UIView()
-  private let textField = UITextField()
   
   // MARK: - Init
   
@@ -18,6 +18,15 @@ final class CustomTextFiled: UIView {
   }
   
   // MARK: - Private Methods
+  
+  func setIsSecureTextEntry(_ isSecureTextEntry: Bool) {
+    textField.isSecureTextEntry = isSecureTextEntry
+  }
+  
+  func setAttributedPlaceholder(attributedString: NSAttributedString) {
+    textField.attributedPlaceholder = attributedString
+  }
+  
   private func setup() {
     addSubview(backgroundView)
     backgroundView.snp.makeConstraints { make in
@@ -33,9 +42,6 @@ final class CustomTextFiled: UIView {
       make.leading.trailing.equalToSuperview().inset(24)
       make.centerY.equalToSuperview()
     }
-    
-//    textField.attributedPlaceholder = NSAttributedString(string: "placeholder text",
-//                                                         attributes: [NSAttributedString.Key.foregroundColor: UIColor.base3])
   }
 }
 
