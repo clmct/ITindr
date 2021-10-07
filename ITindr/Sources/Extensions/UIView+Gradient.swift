@@ -1,8 +1,3 @@
-//
-//  UIView+Gradient.swift
-//  ITindr
-//
-
 import UIKit
 
 enum GradientDirection {
@@ -32,6 +27,7 @@ extension UIView {
     gradientLayer.name = gradientLayerName
     gradientLayer.colors = colors.map { $0.cgColor }
     gradientLayer.locations = locations
+    gradientLayer.cornerRadius = layer.cornerRadius
 
     switch direction {
     case .vertical:

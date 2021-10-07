@@ -1,8 +1,3 @@
-//
-//  CoordinatorProtocol.swift
-//  ITindr
-//
-
 import Foundation
 
 protocol CoordinatorProtocol {

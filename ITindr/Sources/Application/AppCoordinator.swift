@@ -1,8 +1,3 @@
-//
-//  AppCoordinator.swift
-//  ITindr
-//
-
 import UIKit
 
 class AppCoordinator: CoordinatorProtocol {
@@ -15,5 +10,6 @@ class AppCoordinator: CoordinatorProtocol {
   func start() {
     navigationController.setNavigationBarHidden(true, animated: false)
     navigationController.pushViewController(WelcomeViewController(), animated: true)
+//    navigationController.pushViewController(SignupViewController(viewModel: SignupViewModel()), animated: true)
   }
 }

@@ -1,8 +1,3 @@
-//
-//  AppDelegate.swift
-//  ITindr
-//
-
 import UIKit
 
 @main

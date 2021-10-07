@@ -1,11 +1,6 @@
-//
-//  UIColor+ HEX.swift
-//  ITindr
-//
-
 import UIKit.UIColor
 
-extension UIColor {
+extension UIColor {  
   static func hex(with hex: String) -> UIColor {
     var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B22DC578270CB51500FB0F76 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22DC576270CB51500FB0F76 /* Montserrat-Regular.ttf */; };
+		B22DC579270CB51500FB0F76 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22DC577270CB51500FB0F76 /* Montserrat-Bold.ttf */; };
 		B289D2FD270B6AF600CE810B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289D2FC270B6AF600CE810B /* AppDelegate.swift */; };
 		B289D301270B6AF600CE810B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289D300270B6AF600CE810B /* WelcomeViewController.swift */; };
 		B289D306270B6AF800CE810B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B289D305270B6AF800CE810B /* Assets.xcassets */; };
@@ -20,9 +22,14 @@
 		B289D325270B85D700CE810B /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289D324270B85D700CE810B /* UIColor+AppColors.swift */; };
 		B289D327270B860A00CE810B /* UIFont+AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289D326270B860A00CE810B /* UIFont+AppFonts.swift */; };
 		B289D329270B883700CE810B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289D328270B883600CE810B /* Logger.swift */; };
+		B2A786CE270CCEF900D7704A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A786CD270CCEF900D7704A /* CustomTextField.swift */; };
+		B2A786D6270CD5D800D7704A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A786D3270CD5D800D7704A /* SignupViewController.swift */; };
+		B2A786D7270CD5D800D7704A /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A786D4270CD5D800D7704A /* SignupViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B22DC576270CB51500FB0F76 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		B22DC577270CB51500FB0F76 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		B289D2F9270B6AF600CE810B /* ITindr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITindr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B289D2FC270B6AF600CE810B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B289D300270B6AF600CE810B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +44,9 @@
 		B289D324270B85D700CE810B /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		B289D326270B860A00CE810B /* UIFont+AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+AppFonts.swift"; sourceTree = "<group>"; };
 		B289D328270B883600CE810B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		B2A786CD270CCEF900D7704A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		B2A786D3270CD5D800D7704A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		B2A786D4270CD5D800D7704A /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B22DC574270CB4C900FB0F76 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B22DC575270CB4D300FB0F76 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B22DC575270CB4D300FB0F76 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B22DC577270CB51500FB0F76 /* Montserrat-Bold.ttf */,
+				B22DC576270CB51500FB0F76 /* Montserrat-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		B289D2F0270B6AF600CE810B = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				B289D314270B6DFD00CE810B /* Sources */,
+				B22DC574270CB4C900FB0F76 /* Resources */,
 				B289D305270B6AF800CE810B /* Assets.xcassets */,
 				B289D307270B6AF800CE810B /* LaunchScreen.storyboard */,
 				B289D30A270B6AF800CE810B /* Info.plist */,
@@ -111,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				B289D319270B784200CE810B /* Components */,
+				B2A786CF270CD50C00D7704A /* Signup */,
 				B2D95706270BA2D4003A067E /* Welcome */,
 			);
 			path = Modules;
@@ -120,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				B289D31A270B787B00CE810B /* ButtonFactory.swift */,
+				B2A786CD270CCEF900D7704A /* CustomTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -141,6 +171,15 @@
 				B289D328270B883600CE810B /* Logger.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		B2A786CF270CD50C00D7704A /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				B2A786D3270CD5D800D7704A /* SignupViewController.swift */,
+				B2A786D4270CD5D800D7704A /* SignupViewModel.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		B2D95706270BA2D4003A067E /* Welcome */ = {
@@ -215,6 +254,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22DC579270CB51500FB0F76 /* Montserrat-Bold.ttf in Resources */,
+				B22DC578270CB51500FB0F76 /* Montserrat-Regular.ttf in Resources */,
 				B289D309270B6AF800CE810B /* LaunchScreen.storyboard in Resources */,
 				B289D306270B6AF800CE810B /* Assets.xcassets in Resources */,
 			);
@@ -228,12 +269,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B289D311270B6C1200CE810B /* AppCoordinator.swift in Sources */,
+				B2A786CE270CCEF900D7704A /* CustomTextField.swift in Sources */,
 				B289D323270B852200CE810B /* UIColor+ HEX.swift in Sources */,
 				B289D31B270B787B00CE810B /* ButtonFactory.swift in Sources */,
 				B289D301270B6AF600CE810B /* WelcomeViewController.swift in Sources */,
 				B289D313270B6C3600CE810B /* CoordinatorProtocol.swift in Sources */,
 				B289D329270B883700CE810B /* Logger.swift in Sources */,
 				B289D325270B85D700CE810B /* UIColor+AppColors.swift in Sources */,
+				B2A786D6270CD5D800D7704A /* SignupViewController.swift in Sources */,
+				B2A786D7270CD5D800D7704A /* SignupViewModel.swift in Sources */,
 				B289D321270B81F000CE810B /* UIView+Gradient.swift in Sources */,
 				B289D327270B860A00CE810B /* UIFont+AppFonts.swift in Sources */,
 				B289D2FD270B6AF600CE810B /* AppDelegate.swift in Sources */,
@@ -382,9 +426,10 @@
 				INFOPLIST_FILE = ITindr/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -411,9 +456,10 @@
 				INFOPLIST_FILE = ITindr/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
