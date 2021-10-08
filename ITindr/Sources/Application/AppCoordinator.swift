@@ -9,6 +9,7 @@ class AppCoordinator: CoordinatorProtocol {
   }
   
   func start() {
+    navigationController.setNavigationBarHidden(true, animated: false)
     navigationController.pushViewController(ProfileDescriptionViewController(), animated: true)
 //    let authCoordinator = AuthCoordinator(navigationController: navigationController)
 //    childCoordinators.append(authCoordinator)

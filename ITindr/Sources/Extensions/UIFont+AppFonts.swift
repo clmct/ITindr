@@ -7,6 +7,9 @@ extension UIFont {
     static let bold = "Montserrat-Bold"
   }
   
+  
+  static let regular14 = UIFont.appFont(ofSize: 14)
+  static let bold14 = UIFont.boldAppFont(ofSize: 14)
   static let body16 = UIFont.boldAppFont(ofSize: 16)
   static let body24 = UIFont.boldAppFont(ofSize: 24)
   

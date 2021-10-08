@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1D681F2710403A00782DC7 /* InterestsComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1D681E2710403A00782DC7 /* InterestsComponentView.swift */; };
+		8B1D68222710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1D68212710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift */; };
+		8B1D68242710427D00782DC7 /* InterestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1D68232710427D00782DC7 /* InterestCollectionViewCell.swift */; };
 		8B29533F270ED5A400AC3DA7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29533E270ED5A400AC3DA7 /* LoginViewController.swift */; };
 		8B295341270ED62500AC3DA7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295340270ED62500AC3DA7 /* LoginViewModel.swift */; };
 		8B295343270ED71000AC3DA7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295342270ED71000AC3DA7 /* AuthCoordinator.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B1D681E2710403A00782DC7 /* InterestsComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsComponentView.swift; sourceTree = "<group>"; };
+		8B1D68212710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		8B1D68232710427D00782DC7 /* InterestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B29533E270ED5A400AC3DA7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8B295340270ED62500AC3DA7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8B295342270ED71000AC3DA7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -73,6 +79,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B1D68202710411A00782DC7 /* InterestsComponentView */ = {
+			isa = PBXGroup;
+			children = (
+				8B1D681E2710403A00782DC7 /* InterestsComponentView.swift */,
+				8B1D68212710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift */,
+				8B1D68232710427D00782DC7 /* InterestCollectionViewCell.swift */,
+			);
+			path = InterestsComponentView;
+			sourceTree = "<group>";
+		};
 		8B29533D270ED59000AC3DA7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +199,7 @@
 			children = (
 				B289D31A270B787B00CE810B /* ButtonFactory.swift */,
 				B2A786CD270CCEF900D7704A /* CustomTextField.swift */,
+				8B1D68202710411A00782DC7 /* InterestsComponentView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -312,12 +329,15 @@
 				8B295341270ED62500AC3DA7 /* LoginViewModel.swift in Sources */,
 				8B295345270ED78600AC3DA7 /* WelcomeViewModel.swift in Sources */,
 				8B295348270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift in Sources */,
+				8B1D681F2710403A00782DC7 /* InterestsComponentView.swift in Sources */,
 				B289D313270B6C3600CE810B /* CoordinatorProtocol.swift in Sources */,
 				B289D329270B883700CE810B /* Logger.swift in Sources */,
 				B289D325270B85D700CE810B /* UIColor+AppColors.swift in Sources */,
+				8B1D68242710427D00782DC7 /* InterestCollectionViewCell.swift in Sources */,
 				B2A786D6270CD5D800D7704A /* SignupViewController.swift in Sources */,
 				B2A786D7270CD5D800D7704A /* SignupViewModel.swift in Sources */,
 				B289D321270B81F000CE810B /* UIView+Gradient.swift in Sources */,
+				8B1D68222710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				B289D327270B860A00CE810B /* UIFont+AppFonts.swift in Sources */,
 				8B29534A270EEDCD00AC3DA7 /* AvatarComponentView.swift in Sources */,
 				B289D2FD270B6AF600CE810B /* AppDelegate.swift in Sources */,

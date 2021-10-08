@@ -22,7 +22,7 @@ final class AvatarComponentView: UIView {
       make.size.equalTo(88)
     }
     
-    imageView.backgroundColor = .gray
+    imageView.backgroundColor = .base2
     imageView.layer.cornerRadius = 44
     imageView.layer.masksToBounds = true
     
