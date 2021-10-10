@@ -1,9 +1,11 @@
 import UIKit
 
-protocol SignupViewModelProtocol {
+protocol SignupViewModelDelegate: AnyObject {
+  func signupViewModelDidClose(_ viewModel: SignupViewModel)
 }
 
-protocol SignupViewModelDelegate: AnyObject {
+protocol SignupViewModelProtocol {
+  func signup()
 }
 
 final class SignupViewModel: SignupViewModelProtocol {
@@ -18,6 +20,9 @@ final class SignupViewModel: SignupViewModelProtocol {
 //  }
   
   // MARK: - Public Methods
+  func signup() {
+    delegate?.signupViewModelDidClose(self)
+  }
   
   // MARK: - Actions
   

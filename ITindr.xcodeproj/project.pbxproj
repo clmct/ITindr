@@ -16,8 +16,11 @@
 		8B295345270ED78600AC3DA7 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295344270ED78600AC3DA7 /* WelcomeViewModel.swift */; };
 		8B295348270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */; };
 		8B29534A270EEDCD00AC3DA7 /* AvatarComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295349270EEDCD00AC3DA7 /* AvatarComponentView.swift */; };
+		B214933F271072A30034EF9E /* ProfileDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214933E271072A30034EF9E /* ProfileDescriptionViewModel.swift */; };
+		B2149341271074C70034EF9E /* ProfileDescriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2149340271074C70034EF9E /* ProfileDescriptionCoordinator.swift */; };
 		B22DC578270CB51500FB0F76 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22DC576270CB51500FB0F76 /* Montserrat-Regular.ttf */; };
 		B22DC579270CB51500FB0F76 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B22DC577270CB51500FB0F76 /* Montserrat-Bold.ttf */; };
+		B24A73A027113D2100455097 /* InterestsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A739F27113D2100455097 /* InterestsCollectionViewDataSource.swift */; };
 		B289D2FD270B6AF600CE810B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289D2FC270B6AF600CE810B /* AppDelegate.swift */; };
 		B289D301270B6AF600CE810B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289D300270B6AF600CE810B /* WelcomeViewController.swift */; };
 		B289D306270B6AF800CE810B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B289D305270B6AF800CE810B /* Assets.xcassets */; };
@@ -46,8 +49,11 @@
 		8B295344270ED78600AC3DA7 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDescriptionViewController.swift; sourceTree = "<group>"; };
 		8B295349270EEDCD00AC3DA7 /* AvatarComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarComponentView.swift; sourceTree = "<group>"; };
+		B214933E271072A30034EF9E /* ProfileDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDescriptionViewModel.swift; sourceTree = "<group>"; };
+		B2149340271074C70034EF9E /* ProfileDescriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDescriptionCoordinator.swift; sourceTree = "<group>"; };
 		B22DC576270CB51500FB0F76 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		B22DC577270CB51500FB0F76 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		B24A739F27113D2100455097 /* InterestsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B289D2F9270B6AF600CE810B /* ITindr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITindr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B289D2FC270B6AF600CE810B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B289D300270B6AF600CE810B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 				8B1D681E2710403A00782DC7 /* InterestsComponentView.swift */,
 				8B1D68212710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift */,
 				8B1D68232710427D00782DC7 /* InterestCollectionViewCell.swift */,
+				B24A739F27113D2100455097 /* InterestsCollectionViewDataSource.swift */,
 			);
 			path = InterestsComponentView;
 			sourceTree = "<group>";
@@ -101,8 +108,10 @@
 		8B295346270EEC5100AC3DA7 /* ProfileDescription */ = {
 			isa = PBXGroup;
 			children = (
-				8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */,
 				8B295349270EEDCD00AC3DA7 /* AvatarComponentView.swift */,
+				8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */,
+				B214933E271072A30034EF9E /* ProfileDescriptionViewModel.swift */,
+				B2149340271074C70034EF9E /* ProfileDescriptionCoordinator.swift */,
 			);
 			path = ProfileDescription;
 			sourceTree = "<group>";
@@ -322,9 +331,11 @@
 				8B29533F270ED5A400AC3DA7 /* LoginViewController.swift in Sources */,
 				B289D311270B6C1200CE810B /* AppCoordinator.swift in Sources */,
 				B2A786CE270CCEF900D7704A /* CustomTextField.swift in Sources */,
+				B214933F271072A30034EF9E /* ProfileDescriptionViewModel.swift in Sources */,
 				B289D323270B852200CE810B /* UIColor+ HEX.swift in Sources */,
 				B289D31B270B787B00CE810B /* ButtonFactory.swift in Sources */,
 				B289D301270B6AF600CE810B /* WelcomeViewController.swift in Sources */,
+				B2149341271074C70034EF9E /* ProfileDescriptionCoordinator.swift in Sources */,
 				8B295343270ED71000AC3DA7 /* AuthCoordinator.swift in Sources */,
 				8B295341270ED62500AC3DA7 /* LoginViewModel.swift in Sources */,
 				8B295345270ED78600AC3DA7 /* WelcomeViewModel.swift in Sources */,
@@ -335,6 +346,7 @@
 				B289D325270B85D700CE810B /* UIColor+AppColors.swift in Sources */,
 				8B1D68242710427D00782DC7 /* InterestCollectionViewCell.swift in Sources */,
 				B2A786D6270CD5D800D7704A /* SignupViewController.swift in Sources */,
+				B24A73A027113D2100455097 /* InterestsCollectionViewDataSource.swift in Sources */,
 				B2A786D7270CD5D800D7704A /* SignupViewModel.swift in Sources */,
 				B289D321270B81F000CE810B /* UIView+Gradient.swift in Sources */,
 				8B1D68222710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,

@@ -5,7 +5,7 @@ final class InterestsComponentView: UIView {
   private lazy var collectionView = UICollectionView(frame: .zero,
                                                      collectionViewLayout: leftAlignedCollectionViewFlowLayout)
   
-  private let collectionViewDataSource = CollectionViewDataSource()
+  private let collectionViewDataSource = InterestsCollectionViewDataSource()
   
   
   override init(frame: CGRect) {
@@ -33,22 +33,4 @@ final class InterestsComponentView: UIView {
     collectionView.reloadData()
   }
   
-}
-
-final class CollectionViewDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
-  let items = ["Swift", "Python", "Objective c", "JS", "Javascript", "c++",
-               "Javascript", "C", "Objective c", "Javascript", "Python", "Python",]
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    items.count
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InterestCollectionViewCell.identifier,
-                                                        for: indexPath) as? InterestCollectionViewCell else {
-              return UICollectionViewCell()
-            }
-    cell.configure(text: items[indexPath.row], isSelected: indexPath.row % 3 == 0)
-    return cell
-  }
 }
