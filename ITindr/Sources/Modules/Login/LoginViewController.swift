@@ -21,7 +21,7 @@ final class LoginViewController: UIViewController {
     let item = UILabel()
     item.text = "Авторизация"
     item.textColor = .base1
-    item.font = .body24
+    item.font = .bold24
     return item
   }()
   

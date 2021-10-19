@@ -2,8 +2,8 @@ import UIKit
 
 final class ButtonFactory {
   static func makePinkButton() -> UIButton {
-    let button = UIButton(type: .system)
-      .setTitleFont(.body16)
+    let button = UIButton()
+      .setTitleFont(.bold16)
       .setTitleColor(.base0)
       .makeCornerRadius(radius: 28)
       .addGradient(colors: UIColor.buttonGradient)
@@ -12,8 +12,8 @@ final class ButtonFactory {
   }
   
   static func makeWhiteButton() -> UIButton {
-    let button = UIButton(type: .system)
-      .setTitleFont(.body16)
+    let button = UIButton()
+      .setTitleFont(.bold16)
       .setTitleColor(.base1)
       .setBackgroundColor(.base0)
       .makeCornerRadius(radius: 28)

@@ -1,0 +1,20 @@
+PODS:
+  - SnapKit (5.0.1)
+  - TPKeyboardAvoiding (1.3.5)
+
+DEPENDENCIES:
+  - SnapKit
+  - TPKeyboardAvoiding
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+    - TPKeyboardAvoiding
+
+SPEC CHECKSUMS:
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  TPKeyboardAvoiding: d55b3ea7b362540af8fcf36aa3ed2e87bf210cc6
+
+PODFILE CHECKSUM: 7105b6af9572636824b67f25a1bd895cfb46d37f
+
+COCOAPODS: 1.11.2

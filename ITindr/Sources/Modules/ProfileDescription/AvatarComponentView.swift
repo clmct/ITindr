@@ -34,7 +34,7 @@ final class AvatarComponentView: UIView {
     }
     
     actionButton.setTitle("Выбрать фото")
-    actionButton.setTitleFont(.body16)
+    actionButton.setTitleFont(.bold16)
     actionButton.setTitleColor(.base1)
     actionButton.contentHorizontalAlignment = .leading
   }

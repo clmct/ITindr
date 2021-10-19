@@ -24,7 +24,7 @@ final class ProfileDescriptionViewController: UIViewController {
     let item = UILabel()
     item.text = "Расскажи о себе"
     item.textColor = .base1
-    item.font = .body24
+    item.font = .bold24
     return item
   }()
   
@@ -52,7 +52,7 @@ final class ProfileDescriptionViewController: UIViewController {
     let item = UILabel()
     item.text = "Укажи интересы"
     item.textColor = .base1
-    item.font = .body24
+    item.font = .bold24
     return item
   }()
   
@@ -73,7 +73,6 @@ final class ProfileDescriptionViewController: UIViewController {
     super.viewDidLayoutSubviews()
     saveButton.updateGradientFrame()
   }
-
   
   override func viewDidLoad() {
     super.viewDidLoad()

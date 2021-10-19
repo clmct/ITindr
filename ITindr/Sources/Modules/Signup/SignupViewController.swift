@@ -21,7 +21,7 @@ final class SignupViewController: UIViewController {
     let item = UILabel()
     item.text = "Регистрация"
     item.textColor = .base1
-    item.font = .body24
+    item.font = .bold24
     return item
   }()
   

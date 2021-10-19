@@ -23,7 +23,7 @@ final class WelcomeViewController: UIViewController {
     item.text = "Ты найдешь того, кто\n поревьюит твой код"
     item.textAlignment = .center
     item.numberOfLines = 2
-    item.font = .body16
+    item.font = .bold16
     item.textColor = .base1
     return item
   }()
