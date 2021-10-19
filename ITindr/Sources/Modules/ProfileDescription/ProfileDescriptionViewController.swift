@@ -3,6 +3,8 @@ import UIKit
 final class ProfileDescriptionViewController: UIViewController {
   // MARK: - Properties
   
+  private let viewModel: ProfileDescriptionViewModelProtocol
+  
   private let scrollView: UIScrollView = {
     let item = UIScrollView()
     return item
@@ -66,6 +68,17 @@ final class ProfileDescriptionViewController: UIViewController {
     item.setTitle("Сохранить")
     return item
   }()
+  
+  // MARK: - Init
+  
+  init(viewModel: ProfileDescriptionViewModelProtocol) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   // MARK: - Lifecycle
   

@@ -57,7 +57,7 @@ final class SignupViewController: UIViewController {
     return item
   }()
   
-  private let loginButton: UIButton = {
+  private let backButton: UIButton = {
     let item = ButtonFactory.makeWhiteButton()
     item.setTitle("Назад")
     return item
@@ -90,6 +90,16 @@ final class SignupViewController: UIViewController {
   // MARK: - Public Methods
   
   // MARK: - Actions
+  
+  @objc
+  private func back() {
+    navigationController?.popViewController(animated: true)
+  }
+  
+  @objc
+  private func signup() {
+    viewModel.signup()
+  }
   
   // MARK: - Private Methods
 
@@ -140,21 +150,24 @@ final class SignupViewController: UIViewController {
     }
     
     // bottom
-    contentView.addSubview(loginButton)
-    loginButton.snp.makeConstraints { make in
+    contentView.addSubview(backButton)
+    backButton.snp.makeConstraints { make in
       make.leading.trailing.equalToSuperview().inset(16)
       make.bottom.equalToSuperview().inset(50)
       make.height.equalTo(56)
     }
-    loginButton.layoutIfNeeded()
+    backButton.layoutIfNeeded()
     
     contentView.addSubview(signupButton)
     signupButton.snp.makeConstraints { make in
       make.leading.trailing.equalToSuperview().inset(16)
-      make.bottom.equalTo(loginButton.snp.top).offset(-16)
+      make.bottom.equalTo(backButton.snp.top).offset(-16)
       make.height.equalTo(56)
     }
     signupButton.layoutIfNeeded()
+    
+    signupButton.addTarget(self, action: #selector(signup), for: .touchUpInside)
+    backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
   }
   
   private func setupContentView() {

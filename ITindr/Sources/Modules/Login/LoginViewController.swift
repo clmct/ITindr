@@ -88,6 +88,11 @@ final class LoginViewController: UIViewController {
   }
   
   @objc
+  private func back() {
+    navigationController?.popViewController(animated: true)
+  }
+  
+  @objc
   private func login() {
     guard let email = emailTextField.textField.text,
           let password = passwordTextField.textField.text else { return }
@@ -96,8 +101,10 @@ final class LoginViewController: UIViewController {
       // поля не заполнены
       print("поля не заполнены")
     } else if !(email.contains("@")) {
-      // email не валиден
-      print("email не валиден")
+      // email не валидный
+      print("email не валидный")
+    } else {
+      viewModel.login()
     }
   }
   
@@ -155,6 +162,7 @@ final class LoginViewController: UIViewController {
     loginButton.layoutIfNeeded()
     
     loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+    backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
   }
   
   private func setupContentView() {

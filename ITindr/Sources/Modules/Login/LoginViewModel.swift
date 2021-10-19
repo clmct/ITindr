@@ -1,5 +1,18 @@
 import Foundation
 
-protocol LoginViewModelProtocol {}
+protocol LoginViewModelDelegate: AnyObject {
+  func loginViewModelDidClose(_ viewModel: LoginViewModel)
+}
 
-final class LoginViewModel: LoginViewModelProtocol {}
+protocol LoginViewModelProtocol {
+  func login()
+}
+
+final class LoginViewModel: LoginViewModelProtocol {
+  weak var delegate: LoginViewModelDelegate?
+  
+  
+  func login() {
+    delegate?.loginViewModelDidClose(self)
+  }
+}
