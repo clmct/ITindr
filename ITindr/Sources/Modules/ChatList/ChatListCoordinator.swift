@@ -19,6 +19,9 @@ final class ChatListCoordinator: CoordinatorProtocol {
   
   // MARK: - Public Methods
   func start() {
+    let viewModel = ChatListViewModel(dependencies: appDependency)
+    let viewController = ChatListViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
   }
   
   // MARK: - Private Methods

@@ -47,6 +47,8 @@ final class ProfileViewController: UIViewController {
     return item
   }()
   
+  private let spaceView = UILabel()
+  
   private let rejectionButton: UIButton = {
     let item = ButtonFactory.makeWhiteButton()
     item.setTitle("Отказ")
@@ -105,6 +107,7 @@ final class ProfileViewController: UIViewController {
     scrollView.addSubview(contentView)
     contentView.snp.makeConstraints { make in
       make.edges.width.equalToSuperview()
+      make.height.equalTo(view).inset(40).priority(.low)
     }
   }
   
@@ -141,22 +144,30 @@ final class ProfileViewController: UIViewController {
       make.leading.trailing.equalToSuperview().inset(16)
     }
     
+    
+    contentView.addSubview(spaceView)
+    spaceView.snp.makeConstraints { make in
+      make.top.equalTo(descriptionLabel.snp.bottom)
+      make.leading.trailing.equalToSuperview()
+    }
+    
     contentView.addSubview(rejectionButton)
     rejectionButton.snp.makeConstraints { make in
-      make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
       make.leading.equalToSuperview().inset(16)
       make.trailing.equalTo(view.snp.centerX).inset(8)
+      make.bottom.equalToSuperview()
       make.height.equalTo(56)
     }
     
     contentView.addSubview(likeButton)
     likeButton.snp.makeConstraints { make in
-      make.top.greaterThanOrEqualTo(descriptionLabel.snp.bottom).offset(20)
-      make.bottom.equalToSuperview().inset(20)
       make.leading.equalTo(view.snp.centerX).inset(8)
       make.trailing.equalToSuperview().inset(16)
+      make.bottom.equalToSuperview()
       make.height.equalTo(56)
     }
+    
+    view.layoutIfNeeded()
   }
 }
 
