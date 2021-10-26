@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C812EB96491194E6A83C8B7 /* Pods_ITindr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4BC403415C0A19A15CA6C35 /* Pods_ITindr.framework */; };
+		8B02BEA12727CA68005669BB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B02BEA02727CA68005669BB /* MainCoordinator.swift */; };
 		8B1D681F2710403A00782DC7 /* InterestsComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1D681E2710403A00782DC7 /* InterestsComponentView.swift */; };
 		8B1D68222710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1D68212710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		8B1D68242710427D00782DC7 /* InterestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1D68232710427D00782DC7 /* InterestCollectionViewCell.swift */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		3CF2F37D1EC359F97275C4C7 /* Pods-ITindr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITindr.release.xcconfig"; path = "Target Support Files/Pods-ITindr/Pods-ITindr.release.xcconfig"; sourceTree = "<group>"; };
 		678D04D3C7FFC905549F8F44 /* Pods-ITindr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITindr.debug.xcconfig"; path = "Target Support Files/Pods-ITindr/Pods-ITindr.debug.xcconfig"; sourceTree = "<group>"; };
+		8B02BEA02727CA68005669BB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		8B1D681E2710403A00782DC7 /* InterestsComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsComponentView.swift; sourceTree = "<group>"; };
 		8B1D68212710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8B1D68232710427D00782DC7 /* InterestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B02BE9F2727CA57005669BB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8B02BEA02727CA68005669BB /* MainCoordinator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		8B1D68202710411A00782DC7 /* InterestsComponentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +349,7 @@
 		B289D317270B6E5800CE810B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8B02BE9F2727CA57005669BB /* Main */,
 				B2703F952725E4EA0084924D /* TabBar */,
 				B24A3459271CAF83002F0E2C /* Chat */,
 				B24A344A271C9A90002F0E2C /* ChatList */,
@@ -582,6 +593,7 @@
 				8B295348270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift in Sources */,
 				B24A3461271CB114002F0E2C /* InputTableViewCell.swift in Sources */,
 				B24A3450271C9BA8002F0E2C /* ChatListViewModel.swift in Sources */,
+				8B02BEA12727CA68005669BB /* MainCoordinator.swift in Sources */,
 				8B1D681F2710403A00782DC7 /* InterestsComponentView.swift in Sources */,
 				B289D313270B6C3600CE810B /* CoordinatorProtocol.swift in Sources */,
 				B289D329270B883700CE810B /* Logger.swift in Sources */,

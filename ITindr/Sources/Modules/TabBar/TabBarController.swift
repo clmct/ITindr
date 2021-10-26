@@ -20,10 +20,9 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
   // MARK: - Public Methods
   func start() {
     let tabBarController = UITabBarController()
-//    tabBarController.view.backgroundColor = .red
     tabBarController.viewControllers = makeTabBarControllers()
     tabBarController.selectedIndex = 2
-    navigationController.pushViewController(tabBarController, animated: false)
+    navigationController.setViewControllers([tabBarController], animated: true)
   }
   
   // MARK: - Private Methods

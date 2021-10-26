@@ -3,8 +3,12 @@ import UIKit
 final class AuthCoordinator: CoordinatorProtocol {
   var navigationController: UINavigationController
   private var childCoordinators: [CoordinatorProtocol] = []
+  private let appDependency: AppDependency
   
-  init(navigationController: UINavigationController) {
+  // MARK: - Init
+  init(appDependency: AppDependency,
+       navigationController: UINavigationController) {
+    self.appDependency = appDependency
     self.navigationController = navigationController
   }
   
@@ -14,7 +18,7 @@ final class AuthCoordinator: CoordinatorProtocol {
     let viewModel = WelcomeViewModel()
     viewModel.delegate = self
     let viewController = WelcomeViewController(viewModel: viewModel)
-    navigationController.pushViewController(viewController, animated: true)
+    navigationController.setViewControllers([viewController], animated: true)
   }
   
   private func showSignup() {
