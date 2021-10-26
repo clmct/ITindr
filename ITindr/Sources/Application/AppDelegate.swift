@@ -11,6 +11,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.rootViewController = appCoordinator.navigationController
     window?.makeKeyAndVisible()
     appCoordinator.start()
+//    NetworkService.shared.login(email: "testemail@yandex.ru",
+//                                password: "testpassword") { result in
+//      if case let .success(data) = result {
+//        print(data)
+//      }
+//      
+//    }
     return true
   }
 }

@@ -7,5 +7,7 @@ target 'ITindr' do
 
   # Pods for ITindr
   pod 'SnapKit'
+  pod 'Alamofire'
   pod 'TPKeyboardAvoiding'
+  pod 'R.swift'
 end

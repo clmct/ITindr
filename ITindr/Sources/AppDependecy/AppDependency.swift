@@ -1,3 +1,9 @@
 import Foundation
 
-final class AppDependency {}
+protocol HasNetworkService {
+  var networkService: NetworkService { get }
+}
+
+final class AppDependency: HasNetworkService {
+  var networkService: NetworkService = NetworkService()
+}
