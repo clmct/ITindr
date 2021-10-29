@@ -2,8 +2,11 @@ import UIKit
 
 final class CustomTextFiled: UIView {
   // MARK: - Properties
+  var text: String? {
+    return textField.text
+  }
   
-  let textField = UITextField()
+  private let textField = UITextField()
   private let backgroundView = UIView()
   
   // MARK: - Init
@@ -42,6 +45,7 @@ final class CustomTextFiled: UIView {
       make.leading.trailing.equalToSuperview().inset(24)
       make.centerY.equalToSuperview()
     }
+    textField.font = .regular16
   }
 }
 

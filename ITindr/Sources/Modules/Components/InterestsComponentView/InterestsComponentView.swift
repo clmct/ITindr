@@ -49,7 +49,7 @@ final class InterestsComponentView: UIView {
     collectionView.dataSource = collectionViewDataSource
     collectionView.register(InterestCollectionViewCell.self,
                             forCellWithReuseIdentifier: InterestCollectionViewCell.identifier)
-    collectionView.backgroundColor = .red
+//    collectionView.backgroundColor = .red
     collectionView.reloadData()
   }
   

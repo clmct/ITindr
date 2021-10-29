@@ -4,13 +4,17 @@ PODS:
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
   - SnapKit (5.0.1)
+  - TagListView (1.4.1)
   - TPKeyboardAvoiding (1.3.5)
+  - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
   - Alamofire
   - R.swift
   - SnapKit
+  - TagListView
   - TPKeyboardAvoiding
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   trunk:
@@ -18,15 +22,19 @@ SPEC REPOS:
     - R.swift
     - R.swift.Library
     - SnapKit
+    - TagListView
     - TPKeyboardAvoiding
+    - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   TPKeyboardAvoiding: d55b3ea7b362540af8fcf36aa3ed2e87bf210cc6
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: a493992f2a4252b645ffcf9dd55c9da4fd8372b4
+PODFILE CHECKSUM: aa13a71b3cb93dc06439f18b9efed38eb2efc665
 
 COCOAPODS: 1.11.2

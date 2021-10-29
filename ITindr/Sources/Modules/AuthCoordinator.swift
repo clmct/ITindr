@@ -1,6 +1,12 @@
 import UIKit
 
+protocol AuthCoordinatorDelegate: AnyObject {
+  func authCoordinatorDelegateDidFinish(_ coordinator: AuthCoordinator)
+}
+
 final class AuthCoordinator: CoordinatorProtocol {
+  weak var delegate: AuthCoordinatorDelegate?
+  
   var navigationController: UINavigationController
   private var childCoordinators: [CoordinatorProtocol] = []
   private let appDependency: AppDependency
@@ -22,7 +28,7 @@ final class AuthCoordinator: CoordinatorProtocol {
   }
   
   private func showSignup() {
-    let viewModel = SignupViewModel()
+    let viewModel = SignupViewModel(dependencies: appDependency)
     viewModel.delegate = self
     let viewController = SignupViewController(viewModel: viewModel)
     navigationController.pushViewController(viewController, animated: true)
@@ -37,6 +43,7 @@ final class AuthCoordinator: CoordinatorProtocol {
   
   private func showProfileDescription() {
     let coordinator = ProfileDescriptionCoordinator(navigationController: navigationController)
+    coordinator.delegate = self
     childCoordinators.append(coordinator)
     coordinator.start()
   }
@@ -53,8 +60,12 @@ extension AuthCoordinator: WelcomeViewModelDelegate {
 }
 
 extension AuthCoordinator: SignupViewModelDelegate {
-  func signupViewModelDidClose(_ viewModel: SignupViewModel) {
+  func signupViewModelDidSignUp(_ viewModel: SignupViewModel) {
     showProfileDescription()
+  }
+  
+  func signupViewModelDidBack(_ viewModel: SignupViewModel) {
+    navigationController.popViewController(animated: true)
   }
 }
 
@@ -62,5 +73,11 @@ extension AuthCoordinator: SignupViewModelDelegate {
 extension AuthCoordinator: LoginViewModelDelegate {
   func loginViewModelDidClose(_ viewModel: LoginViewModel) {
     showProfileDescription()
+  }
+}
+
+extension AuthCoordinator: ProfileDescriptionCoordinatorDelegate {
+  func profileDescriptionCoordinatorDidFinish(_ viewModel: ProfileDescriptionCoordinator) {
+    delegate?.authCoordinatorDelegateDidFinish(self)
   }
 }

@@ -19,6 +19,9 @@ final class ProfileCoordinator: CoordinatorProtocol {
   
   // MARK: - Public Methods
   func start() {
+    let viewModel = ProfileViewModel(dependencies: appDependency)
+    let viewController = ProfileViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
   }
   
   // MARK: - Private Methods

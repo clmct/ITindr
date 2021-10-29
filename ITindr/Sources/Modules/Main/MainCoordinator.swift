@@ -37,6 +37,7 @@ final class MainCoordinator: CoordinatorProtocol {
   private func startAuthCoordinator() {
     let coordinator = AuthCoordinator(appDependency: appDependency,
                                       navigationController: navigationController)
+    coordinator.delegate = self
     childCoordinators.append(coordinator)
     coordinator.start()
   }
@@ -47,6 +48,10 @@ final class MainCoordinator: CoordinatorProtocol {
     childCoordinators.append(coordinator)
     coordinator.start()
   }
-  
+}
 
+extension MainCoordinator: AuthCoordinatorDelegate {
+  func authCoordinatorDelegateDidFinish(_ coordinator: AuthCoordinator) {
+    startMainCoordinator()
+  }
 }

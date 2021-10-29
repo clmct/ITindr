@@ -1,27 +1,49 @@
 import UIKit
 
 protocol SignupViewModelDelegate: AnyObject {
-  func signupViewModelDidClose(_ viewModel: SignupViewModel)
+  func signupViewModelDidSignUp(_ viewModel: SignupViewModel)
+  func signupViewModelDidBack(_ viewModel: SignupViewModel)
 }
 
 protocol SignupViewModelProtocol {
-  func signup()
+  var onDidError: VoidClosure? { get set }
+  func signup(email: String, password: String)
+  func back()
 }
 
 final class SignupViewModel: SignupViewModelProtocol {
   // MARK: - Types
-//  typealias Dependencies = Any
+  typealias Dependencies = HasNetworkService
   
   // MARK: - Properties
   weak var delegate: SignupViewModelDelegate?
+  var onDidError: VoidClosure?
+  private let dependencies: Dependencies
   
   // MARK: - Init
-//  init(dependencies: Dependencies) {
-//  }
+  init(dependencies: Dependencies) {
+    self.dependencies = dependencies
+  }
   
   // MARK: - Public Methods
-  func signup() {
-    delegate?.signupViewModelDidClose(self)
+  func signup(email: String, password: String) {
+//    dependencies.networkService.register(email: email,
+//                                         password: password) { result in
+//      switch result {
+//      case .success(let response):
+//        let token = response.accessToken
+//        print(token)
+//        self.delegate?.signupViewModelDidSignUp(self)
+//      case .failure(let error):
+//        print(error)
+//        self.onDidError?()
+//      }
+//    }
+    self.delegate?.signupViewModelDidSignUp(self)
+  }
+  
+  func back() {
+    delegate?.signupViewModelDidBack(self)
   }
   
   // MARK: - Actions

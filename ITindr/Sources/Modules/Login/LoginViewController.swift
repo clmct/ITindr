@@ -94,8 +94,8 @@ final class LoginViewController: UIViewController {
   
   @objc
   private func login() {
-    guard let email = emailTextField.textField.text,
-          let password = passwordTextField.textField.text else { return }
+    guard let email = emailTextField.text,
+          let password = passwordTextField.text else { return }
     
     if email.count == 0 || password.count == 0 {
       // поля не заполнены

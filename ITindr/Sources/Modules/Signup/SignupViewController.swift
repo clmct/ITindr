@@ -3,7 +3,12 @@ import UIKit
 final class SignupViewController: UIViewController {
   // MARK: - Properties
   
-  private let viewModel: SignupViewModelProtocol
+  private var viewModel: SignupViewModelProtocol
+  
+  private let scrollView: TPKeyboardAvoidingScrollView = {
+    let item = TPKeyboardAvoidingScrollView()
+    return item
+  }()
   
   private let contentView: UIView = {
     let item = UIView()
@@ -93,22 +98,53 @@ final class SignupViewController: UIViewController {
   
   @objc
   private func back() {
-    navigationController?.popViewController(animated: true)
+    viewModel.back()
   }
   
   @objc
   private func signup() {
-    viewModel.signup()
+//    guard let email = emailTextField.text,
+//          email.contains("@"),
+//          let password = passwordTextField.text,
+//          let confirmPassword = repeatPasswordTextField.text,
+//          password == confirmPassword,
+//          password.count >= 4 else {
+//            navigationController?.showErrorAlert()
+//            return
+//          }
+//    viewModel.signup(email: email,
+//                     password: password)
+    viewModel.signup(email: "email",
+                     password: "password")
   }
   
   // MARK: - Private Methods
 
   private func bindToViewModel() {
+    viewModel.onDidError = { [weak navigationController] in
+      navigationController?.showErrorAlert()
+    }
+  }
+  
+  private func setupContentView() {
+    view.addSubview(scrollView)
+    scrollView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+    
+    scrollView.addSubview(contentView)
+    contentView.snp.makeConstraints { make in
+      make.edges.width.equalToSuperview()
+    }
+    
+//    scrollView.backgroundColor = .green
+//    contentView.backgroundColor = .red
   }
   
   private func setup() {
     view.backgroundColor = .base0
     setupLayout()
+    bindToViewModel()
   }
   
   private func setupLayout() {
@@ -149,31 +185,24 @@ final class SignupViewController: UIViewController {
       make.height.equalTo(56)
     }
     
-    // bottom
-    contentView.addSubview(backButton)
-    backButton.snp.makeConstraints { make in
-      make.leading.trailing.equalToSuperview().inset(16)
-      make.bottom.equalToSuperview().inset(50)
-      make.height.equalTo(56)
-    }
-    backButton.layoutIfNeeded()
-    
     contentView.addSubview(signupButton)
     signupButton.snp.makeConstraints { make in
+      make.top.equalTo(repeatPasswordTextField.snp.bottom).offset(16)
       make.leading.trailing.equalToSuperview().inset(16)
-      make.bottom.equalTo(backButton.snp.top).offset(-16)
       make.height.equalTo(56)
     }
     signupButton.layoutIfNeeded()
     
+    contentView.addSubview(backButton)
+    backButton.snp.makeConstraints { make in
+      make.top.equalTo(signupButton.snp.bottom).offset(16)
+      make.leading.trailing.equalToSuperview().inset(16)
+      make.height.equalTo(56)
+      make.bottom.equalToSuperview().inset(16)
+    }
+    backButton.layoutIfNeeded()
+    
     signupButton.addTarget(self, action: #selector(signup), for: .touchUpInside)
     backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-  }
-  
-  private func setupContentView() {
-    view.addSubview(contentView)
-    contentView.snp.makeConstraints { make in
-      make.edges.width.equalToSuperview()
-    }
   }
 }

@@ -3,10 +3,10 @@ import UIKit
 final class ProfileDescriptionViewController: UIViewController {
   // MARK: - Properties
   
-  private let viewModel: ProfileDescriptionViewModelProtocol
+  private var viewModel: ProfileDescriptionViewModelProtocol
   
-  private let scrollView: UIScrollView = {
-    let item = UIScrollView()
+  private let scrollView: TPKeyboardAvoidingScrollView = {
+    let item = TPKeyboardAvoidingScrollView()
     return item
   }()
   
@@ -47,6 +47,14 @@ final class ProfileDescriptionViewController: UIViewController {
     let item = UITextView()
     item.layer.cornerRadius = 28
     item.backgroundColor = .base2
+    item.textColor = .base
+    item.font = .regular16
+    item.textContainerInset = UIEdgeInsets(top: 24,
+                                           left: 24,
+                                           bottom: 24,
+                                           right: 24)
+    item.placeholder = "О себе"
+    item.placeholderColor = .base3
     return item
   }()
   
@@ -97,13 +105,28 @@ final class ProfileDescriptionViewController: UIViewController {
   // MARK: - Actions
   
   // MARK: - Private Methods
+  
+  @objc
+  private func save() {
+    viewModel.save()
+  }
 
   private func bindToViewModel() {
+    viewModel.onDidUpdatePhoto = { [weak self] photo in
+      guard let self = self else { return }
+      self.avatarView.setPhoto(image: photo)
+    }
+    
+    avatarView.onDidAction = { [weak self] in
+      guard let self = self else { return }
+      self.viewModel.showImagePicker()
+    }
   }
   
   private func setup() {
     view.backgroundColor = .base0
     setupLayout()
+    bindToViewModel()
   }
   
   private func setupLayout() {
@@ -165,6 +188,8 @@ final class ProfileDescriptionViewController: UIViewController {
       make.bottom.equalToSuperview().inset(16)
     }
     saveButton.layoutIfNeeded()
+    
+    saveButton.addTarget(self, action: #selector(save), for: .touchUpInside)
   }
   
   private func setupContentView() {

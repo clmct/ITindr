@@ -4,8 +4,8 @@ final class ProfileViewController: UIViewController {
   // MARK: - Properties
   private let viewModel: ProfileViewModelProtocol
   
-  private let scrollView: UIScrollView = {
-    let item = UIScrollView()
+  private let scrollView: TPKeyboardAvoidingScrollView = {
+    let item = TPKeyboardAvoidingScrollView()
     return item
   }()
   
