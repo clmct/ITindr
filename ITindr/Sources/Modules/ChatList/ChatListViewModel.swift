@@ -2,11 +2,12 @@ import UIKit
 
 protocol ChatListViewModelProtocol {
   var dataSource: ChartListTableViewDataSource<ChatListCell, ChatListTableViewCell> { get set }
+  func showChat(index: Int)
 }
 
 protocol ChatListViewModelDelegate: AnyObject {
+  func ChatListViewModelDidRequestShowChat(_ viewModel: ChatListViewModel, with id: String)
 }
-
 
 struct ChatListCell {
   var image: UIImage?
@@ -23,7 +24,7 @@ final class ChatListViewModel: ChatListViewModelProtocol {
   weak var delegate: ChatListViewModelDelegate?
   
   var dataSource: ChartListTableViewDataSource<ChatListCell, ChatListTableViewCell>
-  
+  var models: [ChatListCell] = []
   // MARK: - Init
   init(dependencies: Dependencies) {
     let models = [ChatListCell(image: UIImage(named: "ava"),
@@ -32,6 +33,7 @@ final class ChatListViewModel: ChatListViewModelProtocol {
                   ChatListCell(image: UIImage(named: "ava"),
                                title: "Alex",
                                description: "И согласно")]
+    self.models = models
     
     dataSource = ChartListTableViewDataSource<ChatListCell,
                                               ChatListTableViewCell>(models: models,
@@ -41,6 +43,11 @@ final class ChatListViewModel: ChatListViewModelProtocol {
   }
   
   // MARK: - Public Methods
+  func showChat(index: Int) {
+    delegate?.ChatListViewModelDidRequestShowChat(self, with: models[index].title) // id
+  }
+  
+
   
   // MARK: - Actions
   

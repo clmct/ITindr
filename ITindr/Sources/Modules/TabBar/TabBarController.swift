@@ -55,9 +55,9 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
                                   image: R.image.tabBar2(),
                                   tag: 2)
     let navigationController = UINavigationController()
-    navigationController.setNavigationBarHidden(true, animated: false)
     navigationController.tabBarItem = tabBarItem
-    let coordinator = ChatListCoordinator(appDependency: appDependency,
+    let coordinator = ChatFlowCoordinator(appDependency: appDependency,
+                                          tabBarNavigationController: self.navigationController,
                                           navigationController: navigationController)
     childCoordinators.append(coordinator)
     coordinator.start()
@@ -103,6 +103,6 @@ extension MainTabBarCoordinator: ProfileCoordinatorDelegate {
 }
 
 // MARK: - ChatListCoordinatorDelegate
-extension MainTabBarCoordinator: ChatListCoordinatorDelegate {
+extension MainTabBarCoordinator: ChatFlowCoordinatorDelegate {
   
 }

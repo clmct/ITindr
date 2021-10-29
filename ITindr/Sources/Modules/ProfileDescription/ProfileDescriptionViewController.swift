@@ -66,8 +66,8 @@ final class ProfileDescriptionViewController: UIViewController {
     return item
   }()
   
-  private let interestsComponentView: InterestsComponentView = {
-    let item = InterestsComponentView()
+  private let interestsComponentView: InterestsComponentView2 = {
+    let item = InterestsComponentView2(items: ["Swift", "Python", "Objective c", "Swift", "Python", "Objective c"])
     return item
   }()
   

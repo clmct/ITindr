@@ -36,7 +36,7 @@
 		B2471425272676BB0040CFF8 /* NetworkService+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471424272676BB0040CFF8 /* NetworkService+User.swift */; };
 		B2471427272676CC0040CFF8 /* NetworkService+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2471426272676CC0040CFF8 /* NetworkService+Chat.swift */; };
 		B24A3449271C9707002F0E2C /* UIButton+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A3448271C9707002F0E2C /* UIButton+UIImage.swift */; };
-		B24A344E271C9BA8002F0E2C /* ChatListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A344B271C9BA8002F0E2C /* ChatListCoordinator.swift */; };
+		B24A344E271C9BA8002F0E2C /* ChatFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A344B271C9BA8002F0E2C /* ChatFlowCoordinator.swift */; };
 		B24A344F271C9BA8002F0E2C /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A344C271C9BA8002F0E2C /* ChatListViewController.swift */; };
 		B24A3450271C9BA8002F0E2C /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A344D271C9BA8002F0E2C /* ChatListViewModel.swift */; };
 		B24A3452271C9C29002F0E2C /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A3451271C9C29002F0E2C /* ChatListTableViewCell.swift */; };
@@ -111,7 +111,7 @@
 		B2471424272676BB0040CFF8 /* NetworkService+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+User.swift"; sourceTree = "<group>"; };
 		B2471426272676CC0040CFF8 /* NetworkService+Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Chat.swift"; sourceTree = "<group>"; };
 		B24A3448271C9707002F0E2C /* UIButton+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+UIImage.swift"; sourceTree = "<group>"; };
-		B24A344B271C9BA8002F0E2C /* ChatListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCoordinator.swift; sourceTree = "<group>"; };
+		B24A344B271C9BA8002F0E2C /* ChatFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFlowCoordinator.swift; sourceTree = "<group>"; };
 		B24A344C271C9BA8002F0E2C /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		B24A344D271C9BA8002F0E2C /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 		B24A3451271C9C29002F0E2C /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 		B24A344A271C9A90002F0E2C /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
-				B24A344B271C9BA8002F0E2C /* ChatListCoordinator.swift */,
+				B24A344B271C9BA8002F0E2C /* ChatFlowCoordinator.swift */,
 				B24A344C271C9BA8002F0E2C /* ChatListViewController.swift */,
 				B24A344D271C9BA8002F0E2C /* ChatListViewModel.swift */,
 				B24A3451271C9C29002F0E2C /* ChatListTableViewCell.swift */,
@@ -659,7 +659,7 @@
 				B2A786D6270CD5D800D7704A /* SignupViewController.swift in Sources */,
 				B2A786D7270CD5D800D7704A /* SignupViewModel.swift in Sources */,
 				B2703F942725E44B0084924D /* AuthResponse.swift in Sources */,
-				B24A344E271C9BA8002F0E2C /* ChatListCoordinator.swift in Sources */,
+				B24A344E271C9BA8002F0E2C /* ChatFlowCoordinator.swift in Sources */,
 				B24A3449271C9707002F0E2C /* UIButton+UIImage.swift in Sources */,
 				B289D321270B81F000CE810B /* UIView+Gradient.swift in Sources */,
 				8B1D68222710413F00782DC7 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,

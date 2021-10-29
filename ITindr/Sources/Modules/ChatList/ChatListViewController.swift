@@ -22,6 +22,7 @@ final class ChatListViewController: UIViewController {
     view.backgroundColor = .base0
     bindToViewModel()
     setupTableView()
+    title = "Чаты"
   }
   
   // MARK: - Public Methods
@@ -54,6 +55,7 @@ extension ChatListViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    viewModel.showChat(index: indexPath.row)
   }
 }
 

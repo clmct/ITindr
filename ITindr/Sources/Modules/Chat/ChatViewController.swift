@@ -2,6 +2,39 @@ import UIKit
 
 final class ChatViewController: UIViewController {
   // MARK: - Properties
+  override var inputAccessoryView: UIView? {
+    return inputContainerView
+  }
+  
+  lazy var inputContainerView: UIView = {
+    let containerView = UIView()
+    containerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 80)
+    containerView.autoresizingMask = [.flexibleHeight]
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    containerView.backgroundColor = .base0
+    let textField = UITextField()
+    textField.placeholder = "Enter message..."
+    textField.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(textField)
+    textField.delegate = self
+    textField.returnKeyType = UIReturnKeyType.send
+    textField.textColor = .black
+    textField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 30).isActive = true
+    textField.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -30).isActive = true
+    textField.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15).isActive = true
+    textField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20).isActive = true
+    let separatorLineView = UIView()
+    separatorLineView.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(separatorLineView)
+    separatorLineView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+    separatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+    separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
+    separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    return containerView
+  }()
+  
+  override var canBecomeFirstResponder: Bool { return true }
+  
   private let viewModel: ChatViewModelProtocol
   
   private let tableView = UITableView()
@@ -21,8 +54,18 @@ final class ChatViewController: UIViewController {
     super.viewDidLoad()
     setupTableView()
     bindToViewModel()
+    title = "Name"
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    viewModel.viewWillAppear()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    viewModel.viewWillDisappear()
+  }
   // MARK: - Public Methods
   
   // MARK: - Actions
@@ -32,11 +75,14 @@ final class ChatViewController: UIViewController {
   }
   
   private func setupTableView() {
+    view.backgroundColor = .base0
     view.addSubview(tableView)
     tableView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
+      make.bottom.equalToSuperview().inset(80)
     }
     
+    tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 300
     tableView.separatorStyle = .none
@@ -73,4 +119,15 @@ extension ChatViewController: UITableViewDataSource {
   }
   
   
+}
+
+// MARK: UITextFieldDelegate
+extension ChatViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if let message = textField.text {
+//      model.createMessage(identifire: id, newMessage: message)
+      textField.text = ""
+    }
+    return true
+  }
 }

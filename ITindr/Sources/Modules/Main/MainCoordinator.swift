@@ -21,7 +21,8 @@ final class MainCoordinator: CoordinatorProtocol {
   
   // MARK: - Public Methods
   func start() {
-    startAuthCoordinator()
+//    startAuthCoordinator()
+    startMainCoordinator()
   }
 
   func showScreen(with type: FlowStepType) {
