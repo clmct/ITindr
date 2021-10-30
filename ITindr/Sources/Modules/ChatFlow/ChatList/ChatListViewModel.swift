@@ -27,10 +27,10 @@ final class ChatListViewModel: ChatListViewModelProtocol {
   var models: [ChatListCell] = []
   // MARK: - Init
   init(dependencies: Dependencies) {
-    let models = [ChatListCell(image: UIImage(named: "ava"),
+    let models = [ChatListCell(image: R.image.ava(),
                                title: "Mitchell",
                                description: "И согласно правил этой логики Ягода пока не показала что во..."),
-                  ChatListCell(image: UIImage(named: "ava"),
+                  ChatListCell(image: R.image.ava(),
                                title: "Alex",
                                description: "И согласно")]
     self.models = models

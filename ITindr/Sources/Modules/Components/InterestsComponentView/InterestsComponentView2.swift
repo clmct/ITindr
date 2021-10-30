@@ -34,7 +34,6 @@ final class InterestsComponentView2: UIView {
     tagListView.cornerRadius = 12
     tagListView.borderColor = .base1
     tagListView.borderWidth = 1
-    tagListView
     
     tagListView.textFont = .regular14
     tagListView.textColor = .base1

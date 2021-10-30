@@ -34,7 +34,7 @@ class OutputTableViewCell: UITableViewCell {
     
     chatImageView.layer.cornerRadius = 16
     chatImageView.layer.masksToBounds = true
-    chatImageView.image = UIImage(named: "ava")
+    chatImageView.image = R.image.ava()
   }
   
   private func setupMessageContentView() {

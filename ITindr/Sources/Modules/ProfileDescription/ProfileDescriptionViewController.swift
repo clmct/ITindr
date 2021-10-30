@@ -3,7 +3,7 @@ import UIKit
 final class ProfileDescriptionViewController: UIViewController {
   // MARK: - Properties
   
-  private var viewModel: ProfileDescriptionViewModelProtocol
+  private var viewModel: ProfileDescriptionViewModel
   
   private let scrollView: TPKeyboardAvoidingScrollView = {
     let item = TPKeyboardAvoidingScrollView()
@@ -17,7 +17,7 @@ final class ProfileDescriptionViewController: UIViewController {
 
   private let logoImageView: UIImageView = {
     let item = UIImageView()
-    item.image = UIImage(named: "logo")
+    item.image = R.image.logo()
     item.contentMode = .scaleAspectFit
     return item
   }()
@@ -66,8 +66,17 @@ final class ProfileDescriptionViewController: UIViewController {
     return item
   }()
   
-  private let interestsComponentView: InterestsComponentView2 = {
-    let item = InterestsComponentView2(items: ["Swift", "Python", "Objective c", "Swift", "Python", "Objective c"])
+  private let interestsComponentView: InterestsComponentView = {
+    let item = InterestsComponentView(items: [Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Pytnon", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swwewewift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "ft", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                             ])
     return item
   }()
   
@@ -79,7 +88,7 @@ final class ProfileDescriptionViewController: UIViewController {
   
   // MARK: - Init
   
-  init(viewModel: ProfileDescriptionViewModelProtocol) {
+  init(viewModel: ProfileDescriptionViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
@@ -108,13 +117,23 @@ final class ProfileDescriptionViewController: UIViewController {
   
   @objc
   private func save() {
-    viewModel.save()
+    viewModel.save(name: nameTextField.text ?? "",
+                   about: descriptionTextView.text,
+                   topics: interestsComponentView.items)
   }
 
   private func bindToViewModel() {
     viewModel.onDidUpdatePhoto = { [weak self] photo in
       guard let self = self else { return }
       self.avatarView.setPhoto(image: photo)
+    }
+    
+    viewModel.onDidUpdate = { [unowned self] in
+      self.interestsComponentView.configure(items: viewModel.topics)
+    }
+    
+    viewModel.onDidError = { [unowned self] in
+      self.navigationController?.showErrorAlert()
     }
     
     avatarView.onDidAction = { [weak self] in

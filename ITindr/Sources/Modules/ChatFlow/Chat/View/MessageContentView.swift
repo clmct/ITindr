@@ -35,7 +35,7 @@ final class MessageContentView: UIView {
     
     messageLabel.text = "Приезжай ко мне, займемся парным программированием 😏"
     dateLabel.text = "13:03 • 23 августа 2021"
-    messageImageView.image = UIImage(named: "avatar")
+    messageImageView.image = R.image.avatar()
   }
   
   private func setupDateLabel() {

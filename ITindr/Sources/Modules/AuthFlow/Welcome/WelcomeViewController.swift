@@ -13,7 +13,7 @@ final class WelcomeViewController: UIViewController {
   
   private let logoImageView: UIImageView = {
     let item = UIImageView()
-    item.image = UIImage(named: "logo")
+    item.image = R.image.logo()
     item.contentMode = .scaleAspectFit
     return item
   }()
@@ -30,7 +30,7 @@ final class WelcomeViewController: UIViewController {
   
   private let peopleImageView: UIImageView = {
     let item = UIImageView()
-    item.image = UIImage(named: "people")
+    item.image = R.image.people()
     item.contentMode = .scaleAspectFit
     return item
   }()

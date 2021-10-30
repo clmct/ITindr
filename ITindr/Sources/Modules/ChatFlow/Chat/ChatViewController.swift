@@ -23,13 +23,6 @@ final class ChatViewController: UIViewController {
     textField.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -30).isActive = true
     textField.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15).isActive = true
     textField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20).isActive = true
-    let separatorLineView = UIView()
-    separatorLineView.translatesAutoresizingMaskIntoConstraints = false
-    containerView.addSubview(separatorLineView)
-    separatorLineView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-    separatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-    separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
-    separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     return containerView
   }()
   
@@ -92,7 +85,6 @@ final class ChatViewController: UIViewController {
                        forCellReuseIdentifier: OutputTableViewCell.identifier)
     
     tableView.dataSource = self
-//    tableView.delegate = self
     tableView.reloadData()
   }
 }
@@ -125,7 +117,6 @@ extension ChatViewController: UITableViewDataSource {
 extension ChatViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if let message = textField.text {
-//      model.createMessage(identifire: id, newMessage: message)
       textField.text = ""
     }
     return true

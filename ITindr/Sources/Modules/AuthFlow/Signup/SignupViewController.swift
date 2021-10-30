@@ -1,9 +1,14 @@
 import UIKit
 
-final class LoginViewController: UIViewController {
+final class SignupViewController: UIViewController {
   // MARK: - Properties
   
-  private let viewModel: LoginViewModelProtocol
+  private var viewModel: SignupViewModelProtocol
+  
+//  private let scrollView: TPKeyboardAvoidingScrollView = {
+//    let item = TPKeyboardAvoidingScrollView()
+//    return item
+//  }()
   
   private let contentView: UIView = {
     let item = UIView()
@@ -12,14 +17,14 @@ final class LoginViewController: UIViewController {
 
   private let logoImageView: UIImageView = {
     let item = UIImageView()
-    item.image = UIImage(named: "logo")
+    item.image = R.image.logo()
     item.contentMode = .scaleAspectFit
     return item
   }()
   
   private let titleLabel: UILabel = {
     let item = UILabel()
-    item.text = "Авторизация"
+    item.text = "Регистрация"
     item.textColor = .base1
     item.font = .bold24
     return item
@@ -42,9 +47,18 @@ final class LoginViewController: UIViewController {
     return item
   }()
   
-  private let loginButton: UIButton = {
+  private let repeatPasswordTextField: CustomTextFiled = {
+    let item = CustomTextFiled()
+    let attributedString = NSAttributedString(string: "Повторите пароль",
+                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.base3])
+    item.setIsSecureTextEntry(true)
+    item.setAttributedPlaceholder(attributedString: attributedString)
+    return item
+  }()
+  
+  private let signupButton: UIButton = {
     let item = ButtonFactory.makePinkButton()
-    item.setTitle("Войти")
+    item.setTitle("Зарегистрироваться")
     return item
   }()
   
@@ -56,7 +70,7 @@ final class LoginViewController: UIViewController {
   
   // MARK: - Init
   
-  init(viewModel: LoginViewModelProtocol) {
+  init(viewModel: SignupViewModelProtocol) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
@@ -69,7 +83,7 @@ final class LoginViewController: UIViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    loginButton.updateGradientFrame()
+    signupButton.updateGradientFrame()
   }
 
   
@@ -82,35 +96,50 @@ final class LoginViewController: UIViewController {
   
   // MARK: - Actions
   
+  @objc
+  private func back() {
+    viewModel.back()
+  }
+  
+  @objc
+  private func signup() {
+    guard let email = emailTextField.text,
+          email.contains("@"),
+          let password = passwordTextField.text,
+          let confirmPassword = repeatPasswordTextField.text,
+          password == confirmPassword,
+          password.count >= 4 else {
+            navigationController?.showErrorAlert()
+            return
+          }
+    viewModel.signup(email: email,
+                     password: password)
+  }
+  
   // MARK: - Private Methods
 
   private func bindToViewModel() {
+    viewModel.onDidError = { [weak navigationController] in
+      navigationController?.showErrorAlert()
+    }
   }
   
-  @objc
-  private func back() {
-    navigationController?.popViewController(animated: true)
-  }
-  
-  @objc
-  private func login() {
-    guard let email = emailTextField.text,
-          let password = passwordTextField.text else { return }
+  private func setupContentView() {
+//    view.addSubview(scrollView)
+//    scrollView.snp.makeConstraints { make in
+//      make.edges.equalToSuperview()
+//    }
     
-    if email.count == 0 || password.count == 0 {
-      // поля не заполнены
-      print("поля не заполнены")
-    } else if !(email.contains("@")) {
-      // email не валидный
-      print("email не валидный")
-    } else {
-      viewModel.login()
+    view.addSubview(contentView)
+    contentView.snp.makeConstraints { make in
+      make.edges.width.equalToSuperview()
     }
   }
   
   private func setup() {
     view.backgroundColor = .base0
     setupLayout()
+    bindToViewModel()
   }
   
   private func setupLayout() {
@@ -144,6 +173,13 @@ final class LoginViewController: UIViewController {
       make.height.equalTo(56)
     }
     
+    contentView.addSubview(repeatPasswordTextField)
+    repeatPasswordTextField.snp.makeConstraints { make in
+      make.top.equalTo(passwordTextField.snp.bottom).offset(16)
+      make.leading.leading.trailing.equalToSuperview().inset(16)
+      make.height.equalTo(56)
+    }
+    
     // bottom
     contentView.addSubview(backButton)
     backButton.snp.makeConstraints { make in
@@ -153,22 +189,15 @@ final class LoginViewController: UIViewController {
     }
     backButton.layoutIfNeeded()
     
-    contentView.addSubview(loginButton)
-    loginButton.snp.makeConstraints { make in
+    contentView.addSubview(signupButton)
+    signupButton.snp.makeConstraints { make in
       make.leading.trailing.equalToSuperview().inset(16)
       make.bottom.equalTo(backButton.snp.top).offset(-16)
       make.height.equalTo(56)
     }
-    loginButton.layoutIfNeeded()
+    signupButton.layoutIfNeeded()
     
-    loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+    signupButton.addTarget(self, action: #selector(signup), for: .touchUpInside)
     backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-  }
-  
-  private func setupContentView() {
-    view.addSubview(contentView)
-    contentView.snp.makeConstraints { make in
-      make.edges.width.equalToSuperview()
-    }
   }
 }

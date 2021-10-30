@@ -11,13 +11,16 @@ final class ProfileDescriptionCoordinator: CoordinatorProtocol {
   private var childCoordinators: [CoordinatorProtocol] = []
   private var imagePickerCoordinator: ImagePickerCoordinator?
   weak var profileDescriptionViewModel: ProfileDescriptionViewModel?
+  var dependencies: AppDependency
   
-  init(navigationController: UINavigationController) {
+  init(dependencies: AppDependency,
+       navigationController: UINavigationController) {
+    self.dependencies = dependencies
     self.navigationController = navigationController
   }
   
   func start() {
-    let viewModel = ProfileDescriptionViewModel()
+    let viewModel = ProfileDescriptionViewModel(dependencies: dependencies)
     profileDescriptionViewModel = viewModel
     viewModel.delegate = self
     let viewController = ProfileDescriptionViewController(viewModel: viewModel)

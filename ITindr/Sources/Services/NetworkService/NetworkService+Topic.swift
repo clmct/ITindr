@@ -1,9 +1,9 @@
 import Foundation
 
 extension NetworkService {
-  func getTopic(completion: @escaping (Result<Topic, NetworkError>) -> Void) {
+  func getTopic(completion: @escaping (Result<Topics, NetworkError>) -> Void) {
     let url = URLFactory.Topic.topic
-    let token = ""
+    let token = TOKEN ?? ""
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",
     ]
@@ -11,6 +11,6 @@ extension NetworkService {
                                     method: .get,
                                     header: header)
     
-    fetch(urlRequest: request) { (result: Result<Topic, NetworkError>) in completion(result) }
+    fetch(urlRequest: request) { (result: Result<Topics, NetworkError>) in completion(result) }
   }
 }

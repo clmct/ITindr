@@ -1,10 +1,5 @@
 import UIKit
 
-enum FlowStepType {
-  case auth
-  case main
-}
-
 final class MainCoordinator: CoordinatorProtocol {
   // MARK: - Properties
   var navigationController: UINavigationController
@@ -21,17 +16,8 @@ final class MainCoordinator: CoordinatorProtocol {
   
   // MARK: - Public Methods
   func start() {
-//    startAuthCoordinator()
-    startMainCoordinator()
-  }
-
-  func showScreen(with type: FlowStepType) {
-    switch type {
-    case .auth:
-      startAuthCoordinator()
-    case .main:
-      startMainCoordinator()
-    }
+    startAuthCoordinator()
+//    startMainCoordinator()
   }
   
   // MARK: - Private Methods

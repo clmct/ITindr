@@ -1,11 +1,11 @@
 import Foundation
 
 extension NetworkService {
-  func getChatList(completion: @escaping (Result<Profile, NetworkError>) -> Void) {
+  func getChatList(completion: @escaping (Result<Chats, NetworkError>) -> Void) {
     // limit
     // offset
     let url = URLFactory.User.user
-    let token = ""
+    let token = TOKEN ?? ""
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",
     ]
@@ -13,12 +13,12 @@ extension NetworkService {
                                     method: .get,
                                     header: header)
     
-    fetch(urlRequest: request) { (result: Result<Profile, NetworkError>) in completion(result) }
+    fetch(urlRequest: request) { (result: Result<Chats, NetworkError>) in completion(result) }
   }
   
-  func createChat(completion: @escaping (Result<Profile, NetworkError>) -> Void) {
+  func createChat(completion: @escaping (Result<Chat, NetworkError>) -> Void) {
     let url = URLFactory.User.feed
-    let token = ""
+    let token = TOKEN ?? ""
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",
     ]
@@ -26,12 +26,12 @@ extension NetworkService {
                                     method: .get,
                                     header: header)
     
-    fetch(urlRequest: request) { (result: Result<Profile, NetworkError>) in completion(result) }
+    fetch(urlRequest: request) { (result: Result<Chat, NetworkError>) in completion(result) }
   }
   
-  func getMessages(userID: String, completion: @escaping (Result<Profile, NetworkError>) -> Void) {
+  func getMessages(userID: String, completion: @escaping (Result<Messages, NetworkError>) -> Void) {
     let url = URLFactory.User.like(userID: userID)
-    let token = ""
+    let token = TOKEN ?? ""
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",
     ]
@@ -39,12 +39,12 @@ extension NetworkService {
                                     method: .post,
                                     header: header)
     
-    fetch(urlRequest: request) { (result: Result<Profile, NetworkError>) in completion(result) }
+    fetch(urlRequest: request) { (result: Result<Messages, NetworkError>) in completion(result) }
   }
   
-  func sendMessage(userID: String, completion: @escaping (Result<Profile, NetworkError>) -> Void) {
+  func sendMessage(userID: String, completion: @escaping (Result<Message, NetworkError>) -> Void) {
     let url = URLFactory.User.dislike(userID: userID)
-    let token = ""
+    let token = TOKEN ?? ""
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",
     ]
@@ -52,6 +52,6 @@ extension NetworkService {
                                     method: .post,
                                     header: header)
     
-    fetch(urlRequest: request) { (result: Result<Profile, NetworkError>) in completion(result) }
+    fetch(urlRequest: request) { (result: Result<Message, NetworkError>) in completion(result) }
   }
 }

@@ -1,8 +1,8 @@
 import UIKit
 
-final class ProfileViewController: UIViewController {
+final class UsersViewController: UIViewController, MatchShowingProtocol {
   // MARK: - Properties
-  private let viewModel: ProfileViewModelProtocol
+  private var viewModel: UsersViewModelProtocol
   
   private let scrollView: TPKeyboardAvoidingScrollView = {
     let item = TPKeyboardAvoidingScrollView()
@@ -11,6 +11,13 @@ final class ProfileViewController: UIViewController {
   
   private let contentView: UIView = {
     let item = UIView()
+    return item
+  }()
+
+  private let logoImageView: UIImageView = {
+    let item = UIImageView()
+    item.image = R.image.logo()
+    item.contentMode = .scaleAspectFit
     return item
   }()
   
@@ -28,7 +35,16 @@ final class ProfileViewController: UIViewController {
   }()
   
   private let interestsComponentView: InterestsComponentView = {
-    let item = InterestsComponentView(items: [])
+    let item = InterestsComponentView(items: [Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Pytnon", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swwewewift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "ft", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                             ])
     return item
   }()
   
@@ -42,16 +58,24 @@ final class ProfileViewController: UIViewController {
   
   private let spaceView = UILabel()
   
-  private let editButton: UIButton = {
+  private let rejectionButton: UIButton = {
     let item = ButtonFactory.makeWhiteButton()
-    item.setTitle(R.string.localizable.edit())
-    item.addLeftImage(image: R.image.edit(),
+    item.setTitle("Отказ")
+    item.addLeftImage(image: R.image.reject(),
+                      offset: 35)
+    return item
+  }()
+  
+  private let likeButton: UIButton = {
+    let item = ButtonFactory.makePinkButton()
+    item.setTitle("Лайк")
+    item.addLeftImage(image: R.image.like(),
                       offset: 35)
     return item
   }()
   
   // MARK: - Init
-  init(viewModel: ProfileViewModelProtocol) {
+  init(viewModel: UsersViewModelProtocol) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
@@ -63,14 +87,13 @@ final class ProfileViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    editButton.updateGradientFrame()
+    likeButton.updateGradientFrame()
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
     bindToViewModel()
-    title = "Профиль"
   }
   
   // MARK: - Public Methods
@@ -79,11 +102,26 @@ final class ProfileViewController: UIViewController {
   
   // MARK: - Private Methods
   private func bindToViewModel() {
+    viewModel.onDidMatch = {
+      self.showMV()
+    }
+  }
+  
+  func showMV() {
+    tabBarController?.navigationController?.showMatchView {
+      self.viewModel.writeMessage()
+    }
   }
   
   @objc
-  private func edit() {
-    viewModel.showEdit()
+  private func like() {
+    viewModel.like()
+    
+  }
+  
+  @objc
+  private func reject() {
+    viewModel.reject()
   }
   
   private func setup() {
@@ -107,9 +145,17 @@ final class ProfileViewController: UIViewController {
   private func setupLayout() {
     setupContentView()
     
+    contentView.addSubview(logoImageView)
+    logoImageView.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(43)
+      make.centerX.equalToSuperview()
+      make.height.equalTo(45)
+      make.width.equalTo(165)
+    }
+    
     contentView.addSubview(avatarImageView)
     avatarImageView.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(43)
+      make.top.equalTo(logoImageView.snp.bottom).offset(43)
       make.leading.trailing.equalToSuperview().inset(85)
       make.height.equalTo(avatarImageView.snp.width)
     }
@@ -136,17 +182,26 @@ final class ProfileViewController: UIViewController {
       make.leading.trailing.equalToSuperview()
     }
     
-    contentView.addSubview(editButton)
-    editButton.snp.makeConstraints { make in
-      make.leading.equalToSuperview().offset(70)
-      make.trailing.equalToSuperview().inset(70)
+    contentView.addSubview(rejectionButton)
+    rejectionButton.snp.makeConstraints { make in
+      make.leading.equalToSuperview().inset(16)
+      make.trailing.equalTo(view.snp.centerX).offset(-8)
       make.bottom.equalToSuperview()
       make.height.equalTo(56)
     }
     
-    editButton.addTarget(self, action: #selector(edit), for: .touchUpInside)
+    contentView.addSubview(likeButton)
+    likeButton.snp.makeConstraints { make in
+      make.leading.equalTo(view.snp.centerX).offset(8)
+      make.trailing.equalToSuperview().inset(16)
+      make.bottom.equalToSuperview()
+      make.height.equalTo(56)
+    }
     
     view.layoutIfNeeded()
+    
+    rejectionButton.addTarget(self, action: #selector(reject), for: .touchUpInside)
+    likeButton.addTarget(self, action: #selector(like), for: .touchUpInside)
   }
 }
 

@@ -22,7 +22,6 @@ extension AlertShowingProtocol where Self: UINavigationController {
         DispatchQueue.main.async {
           completion(.alertSimulator)
         }
-
       }
     }
     photoAlert.addAction(cameraAction)

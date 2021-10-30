@@ -27,19 +27,18 @@ final class SignupViewModel: SignupViewModelProtocol {
   
   // MARK: - Public Methods
   func signup(email: String, password: String) {
-//    dependencies.networkService.register(email: email,
-//                                         password: password) { result in
-//      switch result {
-//      case .success(let response):
-//        let token = response.accessToken
-//        print(token)
-//        self.delegate?.signupViewModelDidSignUp(self)
-//      case .failure(let error):
-//        print(error)
-//        self.onDidError?()
-//      }
-//    }
-    self.delegate?.signupViewModelDidSignUp(self)
+    dependencies.networkService.register(email: email,
+                                         password: password) { result in
+      switch result {
+      case .success(let response):
+        TOKEN = response.accessToken
+        REFRESHTOKEN = response.refreshToken
+        self.delegate?.signupViewModelDidSignUp(self)
+      case .failure(let error):
+        print(error)
+        self.onDidError?()
+      }
+    }
   }
   
   func back() {

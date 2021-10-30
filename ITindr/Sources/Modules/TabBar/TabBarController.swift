@@ -21,20 +21,36 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
   func start() {
     let tabBarController = UITabBarController()
     tabBarController.viewControllers = makeTabBarControllers()
-    tabBarController.selectedIndex = 2
+    tabBarController.selectedIndex = 0
     navigationController.setViewControllers([tabBarController], animated: true)
   }
   
   // MARK: - Private Methods
   private func makeTabBarControllers() -> [UIViewController] {
     let vc =  UIViewController()
-    vc.view.backgroundColor = .green
+//    vc.view.backgroundColor = .green
     return [
-      prepareSearchCoordinator(),
+      prepareUsersCoordinator(),
       preparePeopleCoordinator(),
-      prepareChatListCoordinator(),
+      prepareChatFlowCoordinator(),
       prepareProfileCoordinator()
     ]
+  }
+
+  private func prepareUsersCoordinator() -> UIViewController {
+    let tabBarItem = UITabBarItem(title: R.string.localizable.search(),
+                                  image: R.image.tabBar0(),
+                                  tag: 0)
+    let navigationController = UINavigationController()
+    navigationController.setNavigationBarHidden(true, animated: false)
+    navigationController.navigationBar.barTintColor = .base1
+    navigationController.tabBarItem = tabBarItem
+    let coordinator = UsersCoordinator(appDependency: appDependency,
+                                         navigationController: navigationController)
+    childCoordinators.append(coordinator)
+    coordinator.start()
+    coordinator.delegate = self
+    return navigationController
   }
   
   private func preparePeopleCoordinator() -> UIViewController {
@@ -50,12 +66,13 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
     return navigationController
   }
   
-  private func prepareChatListCoordinator() -> UIViewController {
+  private func prepareChatFlowCoordinator() -> UIViewController {
     let tabBarItem = UITabBarItem(title: R.string.localizable.chats(),
                                   image: R.image.tabBar2(),
                                   tag: 2)
     let navigationController = UINavigationController()
     navigationController.tabBarItem = tabBarItem
+    navigationController.navigationBar.barTintColor = .base1
     let coordinator = ChatFlowCoordinator(appDependency: appDependency,
                                           tabBarNavigationController: self.navigationController,
                                           navigationController: navigationController)
@@ -65,29 +82,13 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
     return navigationController
   }
   
-  
   private func prepareProfileCoordinator() -> UIViewController {
     let tabBarItem = UITabBarItem(title: R.string.localizable.profile(),
                                   image: R.image.tabBar3(),
                                   tag: 3)
     let navigationController = UINavigationController()
-    navigationController.setNavigationBarHidden(true, animated: false)
     navigationController.tabBarItem = tabBarItem
-    let coordinator = ProfileCoordinator(appDependency: appDependency,
-                                         navigationController: navigationController)
-    childCoordinators.append(coordinator)
-    coordinator.start()
-    coordinator.delegate = self
-    return navigationController
-  }
-  
-  private func prepareSearchCoordinator() -> UIViewController {
-    let tabBarItem = UITabBarItem(title: R.string.localizable.search(),
-                                  image: R.image.tabBar0(),
-                                  tag: 0)
-    let navigationController = UINavigationController()
-    navigationController.setNavigationBarHidden(true, animated: false)
-    navigationController.tabBarItem = tabBarItem
+    navigationController.navigationBar.barTintColor = .base1
     let coordinator = ProfileCoordinator(appDependency: appDependency,
                                          navigationController: navigationController)
     childCoordinators.append(coordinator)
@@ -104,5 +105,10 @@ extension MainTabBarCoordinator: ProfileCoordinatorDelegate {
 
 // MARK: - ChatListCoordinatorDelegate
 extension MainTabBarCoordinator: ChatFlowCoordinatorDelegate {
+  
+}
+
+// MARK: - UsersCoordinatorDelegate
+extension MainTabBarCoordinator: UsersCoordinatorDelegate {
   
 }

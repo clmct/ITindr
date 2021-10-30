@@ -1,9 +1,11 @@
 import UIKit
 
 protocol ProfileViewModelProtocol {
+  func showEdit()
 }
 
 protocol ProfileViewModelDelegate: AnyObject {
+  func profileViewModelDidRequestShowEdit(_ viewModel: ProfileViewModel)
 }
 
 final class ProfileViewModel: ProfileViewModelProtocol {
@@ -18,7 +20,9 @@ final class ProfileViewModel: ProfileViewModelProtocol {
   }
   
   // MARK: - Public Methods
-  
+  func showEdit() {
+    delegate?.profileViewModelDidRequestShowEdit(self)
+  }
   // MARK: - Actions
   
   // MARK: - Private Methods

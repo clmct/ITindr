@@ -35,14 +35,15 @@ final class AuthCoordinator: CoordinatorProtocol {
   }
   
   private func showLogin() {
-    let viewModel = LoginViewModel()
+    let viewModel = LoginViewModel(dependencies: appDependency)
     viewModel.delegate = self
     let viewController = LoginViewController(viewModel: viewModel)
     navigationController.pushViewController(viewController, animated: true)
   }
   
   private func showProfileDescription() {
-    let coordinator = ProfileDescriptionCoordinator(navigationController: navigationController)
+    let coordinator = ProfileDescriptionCoordinator(dependencies: appDependency,
+                                                    navigationController: navigationController)
     coordinator.delegate = self
     childCoordinators.append(coordinator)
     coordinator.start()
@@ -72,7 +73,7 @@ extension AuthCoordinator: SignupViewModelDelegate {
 
 extension AuthCoordinator: LoginViewModelDelegate {
   func loginViewModelDidClose(_ viewModel: LoginViewModel) {
-    showProfileDescription()
+    delegate?.authCoordinatorDelegateDidFinish(self)
   }
 }
 
