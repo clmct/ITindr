@@ -1,0 +1,142 @@
+import UIKit
+import SnapKit
+
+final class WelcomeViewController: UIViewController {
+  // MARK: - Properties
+  
+  private let viewModel: WelcomeViewModelProtocol
+  
+  private let contentView: UIView = {
+    let item = UIView()
+    return item
+  }()
+  
+  private let logoImageView: UIImageView = {
+    let item = UIImageView()
+    item.image = R.image.logo()
+    item.contentMode = .scaleAspectFit
+    return item
+  }()
+  
+  private let descriptionLabel: UILabel = {
+    let item = UILabel()
+    item.text = "Ты найдешь того, кто\n поревьюит твой код"
+    item.textAlignment = .center
+    item.numberOfLines = 2
+    item.font = .bold16
+    item.textColor = .base1
+    return item
+  }()
+  
+  private let peopleImageView: UIImageView = {
+    let item = UIImageView()
+    item.image = R.image.people()
+    item.contentMode = .scaleAspectFit
+    return item
+  }()
+  
+  private let signupButton: UIButton = {
+    let item = ButtonFactory.makePinkButton()
+    item.setTitle("Зарегистрироваться")
+    return item
+  }()
+  
+  private let loginButton: UIButton = {
+    let item = ButtonFactory.makeWhiteButton()
+    item.setTitle("Войти")
+    return item
+  }()
+  
+  // MARK: - Lifecycle
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    signupButton.updateGradientFrame()
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setup()
+  }
+  
+  // MARK: - Init
+  
+  init(viewModel: WelcomeViewModelProtocol) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  @objc
+  private func showSignup() {
+    viewModel.showSignup()
+  }
+  
+  @objc
+  private func showLogin() {
+    viewModel.showLogin()
+  }
+  
+  // MARK: - Private Methods
+  
+  private func setup() {
+    view.backgroundColor = .base0
+    setupLayout()
+  }
+  
+  private func setupLayout() {
+    setupContentView()
+    
+    contentView.addSubview(peopleImageView)
+    peopleImageView.snp.makeConstraints { make in
+      make.centerY.equalToSuperview()
+      make.leading.trailing.equalToSuperview().inset(30)
+    }
+    
+    contentView.addSubview(descriptionLabel)
+    descriptionLabel.snp.makeConstraints { make in
+      make.bottom.equalTo(peopleImageView.snp.top).offset(-64)
+      make.leading.trailing.equalToSuperview().inset(30)
+    }
+    
+    contentView.addSubview(logoImageView)
+    logoImageView.snp.makeConstraints { make in
+      make.bottom.equalTo(descriptionLabel.snp.top).offset(-10)
+      make.centerX.equalToSuperview()
+      make.height.equalTo(45)
+      make.width.equalTo(165)
+    }
+    
+    contentView.addSubview(loginButton)
+    loginButton.snp.makeConstraints { make in
+      make.leading.trailing.equalToSuperview().inset(16)
+      make.bottom.equalToSuperview().inset(50)
+      make.height.equalTo(56)
+    }
+    loginButton.layoutIfNeeded()
+    
+    loginButton.addTarget(self, action: #selector(showLogin), for: .touchUpInside)
+    
+    contentView.addSubview(signupButton)
+    signupButton.snp.makeConstraints { make in
+      make.leading.trailing.equalToSuperview().inset(16)
+      make.bottom.equalTo(loginButton.snp.top).offset(-16)
+      make.height.equalTo(56)
+    }
+    signupButton.layoutIfNeeded()
+    
+    signupButton.addTarget(self, action: #selector(showSignup), for: .touchUpInside)
+  }
+  
+  private func setupContentView() {
+    view.addSubview(contentView)
+    contentView.snp.makeConstraints { make in
+      make.edges.width.equalToSuperview()
+    }
+  }
+  
+}
+

@@ -19,7 +19,23 @@ final class ProfileCoordinator: CoordinatorProtocol {
   
   // MARK: - Public Methods
   func start() {
+    let viewModel = ProfileViewModel(dependencies: appDependency)
+    viewModel.delegate = self
+    let viewController = ProfileViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
   }
   
   // MARK: - Private Methods
+  private func showEdit() {
+    let coordinator = ProfileDescriptionCoordinator(dependencies: appDependency,
+                                                    navigationController: navigationController)
+    childCoordinators.append(coordinator)
+    coordinator.start()
+  }
+}
+
+extension ProfileCoordinator: ProfileViewModelDelegate {
+  func profileViewModelDidRequestShowEdit(_ viewModel: ProfileViewModel) {
+    showEdit()
+  }
 }

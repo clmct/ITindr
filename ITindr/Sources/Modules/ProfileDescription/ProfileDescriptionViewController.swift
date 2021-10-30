@@ -3,10 +3,10 @@ import UIKit
 final class ProfileDescriptionViewController: UIViewController {
   // MARK: - Properties
   
-  private let viewModel: ProfileDescriptionViewModelProtocol
+  private var viewModel: ProfileDescriptionViewModel
   
-  private let scrollView: UIScrollView = {
-    let item = UIScrollView()
+  private let scrollView: TPKeyboardAvoidingScrollView = {
+    let item = TPKeyboardAvoidingScrollView()
     return item
   }()
   
@@ -17,7 +17,7 @@ final class ProfileDescriptionViewController: UIViewController {
 
   private let logoImageView: UIImageView = {
     let item = UIImageView()
-    item.image = UIImage(named: "logo")
+    item.image = R.image.logo()
     item.contentMode = .scaleAspectFit
     return item
   }()
@@ -47,6 +47,14 @@ final class ProfileDescriptionViewController: UIViewController {
     let item = UITextView()
     item.layer.cornerRadius = 28
     item.backgroundColor = .base2
+    item.textColor = .base
+    item.font = .regular16
+    item.textContainerInset = UIEdgeInsets(top: 24,
+                                           left: 24,
+                                           bottom: 24,
+                                           right: 24)
+    item.placeholder = "О себе"
+    item.placeholderColor = .base3
     return item
   }()
   
@@ -59,7 +67,16 @@ final class ProfileDescriptionViewController: UIViewController {
   }()
   
   private let interestsComponentView: InterestsComponentView = {
-    let item = InterestsComponentView()
+    let item = InterestsComponentView(items: [Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Pytnon", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swwewewift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "ft", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                              Topic(id: "", title: "Swift", isSelect: false),
+                                             ])
     return item
   }()
   
@@ -71,7 +88,7 @@ final class ProfileDescriptionViewController: UIViewController {
   
   // MARK: - Init
   
-  init(viewModel: ProfileDescriptionViewModelProtocol) {
+  init(viewModel: ProfileDescriptionViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
@@ -97,13 +114,38 @@ final class ProfileDescriptionViewController: UIViewController {
   // MARK: - Actions
   
   // MARK: - Private Methods
+  
+  @objc
+  private func save() {
+    viewModel.save(name: nameTextField.text ?? "",
+                   about: descriptionTextView.text,
+                   topics: interestsComponentView.items)
+  }
 
   private func bindToViewModel() {
+    viewModel.onDidUpdatePhoto = { [weak self] photo in
+      guard let self = self else { return }
+      self.avatarView.setPhoto(image: photo)
+    }
+    
+    viewModel.onDidUpdate = { [unowned self] in
+      self.interestsComponentView.configure(items: viewModel.topics)
+    }
+    
+    viewModel.onDidError = { [unowned self] in
+      self.navigationController?.showErrorAlert()
+    }
+    
+    avatarView.onDidAction = { [weak self] in
+      guard let self = self else { return }
+      self.viewModel.showImagePicker()
+    }
   }
   
   private func setup() {
     view.backgroundColor = .base0
     setupLayout()
+    bindToViewModel()
   }
   
   private func setupLayout() {
@@ -165,6 +207,8 @@ final class ProfileDescriptionViewController: UIViewController {
       make.bottom.equalToSuperview().inset(16)
     }
     saveButton.layoutIfNeeded()
+    
+    saveButton.addTarget(self, action: #selector(save), for: .touchUpInside)
   }
   
   private func setupContentView() {

@@ -4,8 +4,8 @@ final class ProfileViewController: UIViewController {
   // MARK: - Properties
   private let viewModel: ProfileViewModelProtocol
   
-  private let scrollView: UIScrollView = {
-    let item = UIScrollView()
+  private let scrollView: TPKeyboardAvoidingScrollView = {
+    let item = TPKeyboardAvoidingScrollView()
     return item
   }()
   
@@ -13,17 +13,10 @@ final class ProfileViewController: UIViewController {
     let item = UIView()
     return item
   }()
-
-  private let logoImageView: UIImageView = {
-    let item = UIImageView()
-    item.image = UIImage(named: "logo")
-    item.contentMode = .scaleAspectFit
-    return item
-  }()
   
   private let avatarImageView: UIImageView = {
     let item = UIImageView()
-    item.image = UIImage(named: "avatar")
+    item.image = R.image.avatar()
     item.contentMode = .scaleAspectFit
     return item
   }()
@@ -35,7 +28,7 @@ final class ProfileViewController: UIViewController {
   }()
   
   private let interestsComponentView: InterestsComponentView = {
-    let item = InterestsComponentView(items: ["Swift", "Python", "Objective c"])
+    let item = InterestsComponentView(items: [])
     return item
   }()
   
@@ -49,17 +42,11 @@ final class ProfileViewController: UIViewController {
   
   private let spaceView = UILabel()
   
-  private let rejectionButton: UIButton = {
+  private let editButton: UIButton = {
     let item = ButtonFactory.makeWhiteButton()
-    item.setTitle("Отказ")
-    item.addLeftImage(image: UIImage(named: "reject"), offset: 35)
-    return item
-  }()
-  
-  private let likeButton: UIButton = {
-    let item = ButtonFactory.makePinkButton()
-    item.setTitle("Лайк")
-    item.addLeftImage(image: UIImage(named: "like"), offset: 35)
+    item.setTitle(R.string.localizable.edit())
+    item.addLeftImage(image: R.image.edit(),
+                      offset: 35)
     return item
   }()
   
@@ -76,13 +63,14 @@ final class ProfileViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    likeButton.updateGradientFrame()
+    editButton.updateGradientFrame()
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
     bindToViewModel()
+    title = "Профиль"
   }
   
   // MARK: - Public Methods
@@ -91,6 +79,11 @@ final class ProfileViewController: UIViewController {
   
   // MARK: - Private Methods
   private func bindToViewModel() {
+  }
+  
+  @objc
+  private func edit() {
+    viewModel.showEdit()
   }
   
   private func setup() {
@@ -114,17 +107,9 @@ final class ProfileViewController: UIViewController {
   private func setupLayout() {
     setupContentView()
     
-    contentView.addSubview(logoImageView)
-    logoImageView.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(43)
-      make.centerX.equalToSuperview()
-      make.height.equalTo(45)
-      make.width.equalTo(165)
-    }
-    
     contentView.addSubview(avatarImageView)
     avatarImageView.snp.makeConstraints { make in
-      make.top.equalTo(logoImageView.snp.bottom).offset(43)
+      make.top.equalToSuperview().offset(43)
       make.leading.trailing.equalToSuperview().inset(85)
       make.height.equalTo(avatarImageView.snp.width)
     }
@@ -151,21 +136,15 @@ final class ProfileViewController: UIViewController {
       make.leading.trailing.equalToSuperview()
     }
     
-    contentView.addSubview(rejectionButton)
-    rejectionButton.snp.makeConstraints { make in
-      make.leading.equalToSuperview().inset(16)
-      make.trailing.equalTo(view.snp.centerX).inset(8)
+    contentView.addSubview(editButton)
+    editButton.snp.makeConstraints { make in
+      make.leading.equalToSuperview().offset(70)
+      make.trailing.equalToSuperview().inset(70)
       make.bottom.equalToSuperview()
       make.height.equalTo(56)
     }
     
-    contentView.addSubview(likeButton)
-    likeButton.snp.makeConstraints { make in
-      make.leading.equalTo(view.snp.centerX).inset(8)
-      make.trailing.equalToSuperview().inset(16)
-      make.bottom.equalToSuperview()
-      make.height.equalTo(56)
-    }
+    editButton.addTarget(self, action: #selector(edit), for: .touchUpInside)
     
     view.layoutIfNeeded()
   }

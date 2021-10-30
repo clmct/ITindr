@@ -31,7 +31,7 @@ extension NetworkService {
   
   
   func logout(completion: @escaping (Result<AuthResponse, NetworkError>) -> Void) {
-    let token = ""
+    let token = TOKEN ?? ""
     let url = URLFactory.Authentication.logout
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",
@@ -43,7 +43,7 @@ extension NetworkService {
   }
   
   func refresh(completion: @escaping (Result<AuthResponse, NetworkError>) -> Void) {
-    let token = ""
+    let token = TOKEN ?? ""
     let url = URLFactory.Authentication.refresh
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",

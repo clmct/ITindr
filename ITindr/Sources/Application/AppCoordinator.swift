@@ -11,11 +11,10 @@ class AppCoordinator: CoordinatorProtocol {
   }
   
   func start() {
-    let coordinator = MainTabBarCoordinator(appDependency: appDependency,
-                                            navigationController: navigationController)
+    let coordinator = MainCoordinator(appDependency: appDependency,
+                                      navigationController: navigationController)
     childCoordinators.append(coordinator)
     coordinator.start()
-    
   }
   
   private func setup() {

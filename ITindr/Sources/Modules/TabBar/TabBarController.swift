@@ -20,30 +20,61 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
   // MARK: - Public Methods
   func start() {
     let tabBarController = UITabBarController()
-//    tabBarController.view.backgroundColor = .red
     tabBarController.viewControllers = makeTabBarControllers()
-    tabBarController.selectedIndex = 2
-    navigationController.pushViewController(tabBarController, animated: false)
+    tabBarController.selectedIndex = 0
+    navigationController.setViewControllers([tabBarController], animated: true)
   }
   
   // MARK: - Private Methods
   private func makeTabBarControllers() -> [UIViewController] {
     let vc =  UIViewController()
-    vc.view.backgroundColor = .green
+//    vc.view.backgroundColor = .green
     return [
-      prepareSearchCoordinator(),
-      vc,
-      prepareChatListCoordinator(),
+      prepareUsersCoordinator(),
+      preparePeopleCoordinator(),
+      prepareChatFlowCoordinator(),
       prepareProfileCoordinator()
     ]
   }
+
+  private func prepareUsersCoordinator() -> UIViewController {
+    let tabBarItem = UITabBarItem(title: R.string.localizable.search(),
+                                  image: R.image.tabBar0(),
+                                  tag: 0)
+    let navigationController = UINavigationController()
+    navigationController.setNavigationBarHidden(true, animated: false)
+    navigationController.navigationBar.barTintColor = .base1
+    navigationController.tabBarItem = tabBarItem
+    let coordinator = UsersCoordinator(appDependency: appDependency,
+                                         navigationController: navigationController)
+    childCoordinators.append(coordinator)
+    coordinator.start()
+    coordinator.delegate = self
+    return navigationController
+  }
   
-  private func prepareChatListCoordinator() -> UIViewController {
-    let tabBarItem = UITabBarItem(title: "Chats", image: UIImage(named: "tabBar-2"), selectedImage: UIImage(named: "tabBar-2")?.imageWithColor(.red))
+  private func preparePeopleCoordinator() -> UIViewController {
+    let tabBarItem = UITabBarItem(title: R.string.localizable.people(),
+                                  image: R.image.tabBar1(),
+                                  tag: 1)
     let navigationController = UINavigationController()
     navigationController.setNavigationBarHidden(true, animated: false)
     navigationController.tabBarItem = tabBarItem
-    let coordinator = ChatListCoordinator(appDependency: appDependency,
+    let vc = UIViewController()
+    vc.view.backgroundColor = .white
+    navigationController.setViewControllers([vc], animated: false)
+    return navigationController
+  }
+  
+  private func prepareChatFlowCoordinator() -> UIViewController {
+    let tabBarItem = UITabBarItem(title: R.string.localizable.chats(),
+                                  image: R.image.tabBar2(),
+                                  tag: 2)
+    let navigationController = UINavigationController()
+    navigationController.tabBarItem = tabBarItem
+    navigationController.navigationBar.barTintColor = .base1
+    let coordinator = ChatFlowCoordinator(appDependency: appDependency,
+                                          tabBarNavigationController: self.navigationController,
                                           navigationController: navigationController)
     childCoordinators.append(coordinator)
     coordinator.start()
@@ -52,19 +83,12 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
   }
   
   private func prepareProfileCoordinator() -> UIViewController {
+    let tabBarItem = UITabBarItem(title: R.string.localizable.profile(),
+                                  image: R.image.tabBar3(),
+                                  tag: 3)
     let navigationController = UINavigationController()
-    navigationController.setNavigationBarHidden(true, animated: false)
-    let coordinator = ProfileCoordinator(appDependency: appDependency,
-                                         navigationController: navigationController)
-    childCoordinators.append(coordinator)
-    coordinator.start()
-    coordinator.delegate = self
-    return navigationController
-  }
-  
-  private func prepareSearchCoordinator() -> UIViewController {
-    let navigationController = UINavigationController()
-    navigationController.setNavigationBarHidden(true, animated: false)
+    navigationController.tabBarItem = tabBarItem
+    navigationController.navigationBar.barTintColor = .base1
     let coordinator = ProfileCoordinator(appDependency: appDependency,
                                          navigationController: navigationController)
     childCoordinators.append(coordinator)
@@ -80,6 +104,11 @@ extension MainTabBarCoordinator: ProfileCoordinatorDelegate {
 }
 
 // MARK: - ChatListCoordinatorDelegate
-extension MainTabBarCoordinator: ChatListCoordinatorDelegate {
+extension MainTabBarCoordinator: ChatFlowCoordinatorDelegate {
+  
+}
+
+// MARK: - UsersCoordinatorDelegate
+extension MainTabBarCoordinator: UsersCoordinatorDelegate {
   
 }

@@ -5,14 +5,14 @@ final class InterestsComponentView: UIView {
     return Float(collectionView.collectionViewLayout.collectionViewContentSize.height)
   }
   
-  public var items: [String] = []
+  public var items: Topics = []
   private lazy var leftAlignedCollectionViewFlowLayout = LeftAlignedCollectionViewFlowLayout()
   private lazy var collectionView = UICollectionView(frame: .zero,
                                                      collectionViewLayout: leftAlignedCollectionViewFlowLayout)
   
   private lazy var collectionViewDataSource = CollectionViewDataSource(items: items)
   
-  init(items: [String]) {
+  init(items: Topics) {
     super.init(frame: .zero)
     self.items = items
     backgroundColor = .clear
@@ -37,6 +37,11 @@ final class InterestsComponentView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
+  func configure(items: Topics) {
+    self.items = items
+    collectionView.reloadData()
+  }
+  
   private func setup() {
     addSubview(collectionView)
     collectionView.snp.makeConstraints { make in
@@ -45,20 +50,28 @@ final class InterestsComponentView: UIView {
     
     collectionView.backgroundColor = .clear
     
-    collectionView.delegate = collectionViewDataSource
+    collectionView.delegate = self
     collectionView.dataSource = collectionViewDataSource
     collectionView.register(InterestCollectionViewCell.self,
                             forCellWithReuseIdentifier: InterestCollectionViewCell.identifier)
-    collectionView.backgroundColor = .red
+//    collectionView.backgroundColor = .red
     collectionView.reloadData()
   }
-  
 }
 
+
+extension InterestsComponentView: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    self.items[indexPath.row].isSelect.toggle()
+    collectionView.reloadData()
+  }
+}
+
+
 final class CollectionViewDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
-  private let items: [String]
+  private var items: Topics
   
-  init(items: [String]) {
+  init(items: Topics) {
     self.items = items
   }
   
@@ -71,8 +84,8 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDelegate, UIColl
                                                         for: indexPath) as? InterestCollectionViewCell else {
               return UICollectionViewCell()
             }
-    cell.configure(text: items[indexPath.row], isSelected: indexPath.row % 3 == 0)
-    cell.backgroundColor = .green
+    cell.configure(text: items[indexPath.row].title, isSelected: items[indexPath.row].isSelect)
+//    cell.backgroundColor = .green
     return cell
   }
 }

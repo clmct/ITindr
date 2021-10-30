@@ -178,20 +178,30 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 10 images.
+  /// This `R.image` struct is generated, and contains static references to 15 images.
   struct image {
+    /// Image `IT’S A MATCH!`.
+    static let itsamatcH = Rswift.ImageResource(bundle: R.hostingBundle, name: "IT’S A MATCH!")
     /// Image `ava`.
     static let ava = Rswift.ImageResource(bundle: R.hostingBundle, name: "ava")
     /// Image `avatar`.
     static let avatar = Rswift.ImageResource(bundle: R.hostingBundle, name: "avatar")
+    /// Image `defaultAva`.
+    static let defaultAva = Rswift.ImageResource(bundle: R.hostingBundle, name: "defaultAva")
+    /// Image `edit`.
+    static let edit = Rswift.ImageResource(bundle: R.hostingBundle, name: "edit")
     /// Image `like`.
     static let like = Rswift.ImageResource(bundle: R.hostingBundle, name: "like")
     /// Image `logo`.
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
     /// Image `people`.
     static let people = Rswift.ImageResource(bundle: R.hostingBundle, name: "people")
+    /// Image `photo-button`.
+    static let photoButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo-button")
     /// Image `reject`.
     static let reject = Rswift.ImageResource(bundle: R.hostingBundle, name: "reject")
+    /// Image `send-button`.
+    static let sendButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "send-button")
     /// Image `tabBar-0`.
     static let tabBar0 = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBar-0")
     /// Image `tabBar-1`.
@@ -200,6 +210,13 @@ struct R: Rswift.Validatable {
     static let tabBar2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBar-2")
     /// Image `tabBar-3`.
     static let tabBar3 = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBar-3")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "IT’S A MATCH!", bundle: ..., traitCollection: ...)`
+    static func itsamatcH(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.itsamatcH, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "ava", bundle: ..., traitCollection: ...)`
@@ -212,6 +229,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "avatar", bundle: ..., traitCollection: ...)`
     static func avatar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.avatar, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "defaultAva", bundle: ..., traitCollection: ...)`
+    static func defaultAva(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.defaultAva, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "edit", bundle: ..., traitCollection: ...)`
+    static func edit(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.edit, compatibleWith: traitCollection)
     }
     #endif
 
@@ -237,9 +268,23 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "photo-button", bundle: ..., traitCollection: ...)`
+    static func photoButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photoButton, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "reject", bundle: ..., traitCollection: ...)`
     static func reject(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.reject, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "send-button", bundle: ..., traitCollection: ...)`
+    static func sendButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sendButton, compatibleWith: traitCollection)
     }
     #endif
 
@@ -270,6 +315,212 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.tabBar3, compatibleWith: traitCollection)
     }
     #endif
+
+    fileprivate init() {}
+  }
+
+  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  struct string {
+    /// This `R.string.localizable` struct is generated, and contains static references to 13 localization keys.
+    struct localizable {
+      /// Value: Cancel
+      static let cancel = Rswift.StringResource(key: "cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Take photo
+      static let takePhoto = Rswift.StringResource(key: "take.photo", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Ваши интерфейсы подошли друг к другу
+      static let matchTitle = Rswift.StringResource(key: "match.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Выбрать фото
+      static let choosePhoto = Rswift.StringResource(key: "choose.photo", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Люди
+      static let people = Rswift.StringResource(key: "people", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Написать сообщение
+      static let writeMessage = Rswift.StringResource(key: "write.message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Ошибка валидации
+      static let errorValidation = Rswift.StringResource(key: "error.validation", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Поиск
+      static let search = Rswift.StringResource(key: "search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Профиль
+      static let profile = Rswift.StringResource(key: "profile", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Редактировать
+      static let edit = Rswift.StringResource(key: "edit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Удалить фото
+      static let deletePhoto = Rswift.StringResource(key: "delete.photo", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Хорошо
+      static let ok = Rswift.StringResource(key: "ok", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Чаты
+      static let chats = Rswift.StringResource(key: "chats", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: Cancel
+      static func cancel(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("cancel", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "cancel"
+        }
+
+        return NSLocalizedString("cancel", bundle: bundle, comment: "")
+      }
+
+      /// Value: Take photo
+      static func takePhoto(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("take.photo", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "take.photo"
+        }
+
+        return NSLocalizedString("take.photo", bundle: bundle, comment: "")
+      }
+
+      /// Value: Ваши интерфейсы подошли друг к другу
+      static func matchTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("match.title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "match.title"
+        }
+
+        return NSLocalizedString("match.title", bundle: bundle, comment: "")
+      }
+
+      /// Value: Выбрать фото
+      static func choosePhoto(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("choose.photo", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "choose.photo"
+        }
+
+        return NSLocalizedString("choose.photo", bundle: bundle, comment: "")
+      }
+
+      /// Value: Люди
+      static func people(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("people", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "people"
+        }
+
+        return NSLocalizedString("people", bundle: bundle, comment: "")
+      }
+
+      /// Value: Написать сообщение
+      static func writeMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("write.message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "write.message"
+        }
+
+        return NSLocalizedString("write.message", bundle: bundle, comment: "")
+      }
+
+      /// Value: Ошибка валидации
+      static func errorValidation(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error.validation", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.validation"
+        }
+
+        return NSLocalizedString("error.validation", bundle: bundle, comment: "")
+      }
+
+      /// Value: Поиск
+      static func search(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("search", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "search"
+        }
+
+        return NSLocalizedString("search", bundle: bundle, comment: "")
+      }
+
+      /// Value: Профиль
+      static func profile(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("profile", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "profile"
+        }
+
+        return NSLocalizedString("profile", bundle: bundle, comment: "")
+      }
+
+      /// Value: Редактировать
+      static func edit(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("edit", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "edit"
+        }
+
+        return NSLocalizedString("edit", bundle: bundle, comment: "")
+      }
+
+      /// Value: Удалить фото
+      static func deletePhoto(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("delete.photo", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "delete.photo"
+        }
+
+        return NSLocalizedString("delete.photo", bundle: bundle, comment: "")
+      }
+
+      /// Value: Хорошо
+      static func ok(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ok", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ok"
+        }
+
+        return NSLocalizedString("ok", bundle: bundle, comment: "")
+      }
+
+      /// Value: Чаты
+      static func chats(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("chats", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "chats"
+        }
+
+        return NSLocalizedString("chats", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
 
     fileprivate init() {}
   }
