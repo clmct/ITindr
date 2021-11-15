@@ -15,4 +15,5 @@ target 'ITindr' do
   pod 'UITextView+Placeholder'
   pod 'TagListView'
   pod 'R.swift'
+  pod 'Kingfisher'
 end

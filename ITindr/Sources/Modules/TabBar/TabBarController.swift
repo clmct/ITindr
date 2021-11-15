@@ -27,8 +27,6 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
   
   // MARK: - Private Methods
   private func makeTabBarControllers() -> [UIViewController] {
-    let vc =  UIViewController()
-//    vc.view.backgroundColor = .green
     return [
       prepareUsersCoordinator(),
       preparePeopleCoordinator(),
@@ -58,10 +56,12 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
                                   image: R.image.tabBar1(),
                                   tag: 1)
     let navigationController = UINavigationController()
-    navigationController.setNavigationBarHidden(true, animated: false)
+    navigationController.setNavigationBarHidden(false, animated: false)
     navigationController.tabBarItem = tabBarItem
-    let vc = UIViewController()
-    vc.view.backgroundColor = .white
+    let viewModel = PeopleViewModel(dependencies: appDependency)
+    let vc = PeopleViewController(viewModel: viewModel)
+    vc.title = "Люди"
+    vc.view.backgroundColor = .green
     navigationController.setViewControllers([vc], animated: false)
     return navigationController
   }

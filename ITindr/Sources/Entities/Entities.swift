@@ -30,9 +30,15 @@ struct AuthResponse: Codable {
 
 // MARK: - Profile
 struct Profile: Codable {
-    let userID, name: String
-    let aboutMyself, avatar: String?
-    let topics: [Topic]
+  let userID, name: String
+  let aboutMyself: String?
+  let avatar: String?
+  let topics: [Topic]
+
+  enum CodingKeys: String, CodingKey {
+      case userID = "userId"
+      case name, aboutMyself, avatar, topics
+  }
 }
 
 // MARK: - UpdateProfile - local
@@ -44,7 +50,7 @@ struct UpdateProfile: Codable {
 // MARK: - Topic
 struct Topic: Codable {
   let id, title: String
-  var isSelect = false
+  var isSelect: Bool? = false
 }
 
 // MARK: - Chat

@@ -16,8 +16,25 @@ final class MainCoordinator: CoordinatorProtocol {
   
   // MARK: - Public Methods
   func start() {
-    startAuthCoordinator()
-//    startMainCoordinator()
+    if TOKEN == nil {
+      startAuthCoordinator()
+    } else {
+      updateToken()
+    }
+  }
+  
+  func updateToken() {
+    appDependency.networkService.refresh { result in
+      switch result {
+      case .success(let response):
+        TOKEN = response.accessToken
+        REFRESHTOKEN = response.refreshToken
+        self.startMainCoordinator()
+      case .failure(let error):
+        print(error)
+        self.startAuthCoordinator()
+      }
+    }
   }
   
   // MARK: - Private Methods

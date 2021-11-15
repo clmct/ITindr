@@ -11,6 +11,7 @@ extension NetworkService {
     ]
     let query = [
       "limit": "\(limit)",
+      "offset": "\(offset)",
     ]
     let request = createBaseRequest(url: url,
                                     query: query,

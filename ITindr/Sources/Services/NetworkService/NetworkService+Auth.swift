@@ -44,12 +44,17 @@ extension NetworkService {
   
   func refresh(completion: @escaping (Result<AuthResponse, NetworkError>) -> Void) {
     let token = TOKEN ?? ""
+    let refreshtoken = REFRESHTOKEN ?? ""
     let url = URLFactory.Authentication.refresh
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",
     ]
+    let params = [
+      "refreshToken": "\(refreshtoken)",
+    ]
     let request = createBaseRequest(url: url,
                                     method: .post,
+                                    parameters: params,
                                     header: header)
     fetch(urlRequest: request) { (result: Result<AuthResponse, NetworkError>) in completion(result) }
   }

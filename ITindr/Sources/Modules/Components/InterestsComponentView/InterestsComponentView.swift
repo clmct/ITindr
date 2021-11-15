@@ -62,7 +62,7 @@ final class InterestsComponentView: UIView {
 
 extension InterestsComponentView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    self.items[indexPath.row].isSelect.toggle()
+    self.items[indexPath.row].isSelect!.toggle()
     collectionView.reloadData()
   }
 }
@@ -84,7 +84,7 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDelegate, UIColl
                                                         for: indexPath) as? InterestCollectionViewCell else {
               return UICollectionViewCell()
             }
-    cell.configure(text: items[indexPath.row].title, isSelected: items[indexPath.row].isSelect)
+    cell.configure(text: items[indexPath.row].title, isSelected: items[indexPath.row].isSelect!)
 //    cell.backgroundColor = .green
     return cell
   }

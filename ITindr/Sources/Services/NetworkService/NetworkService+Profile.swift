@@ -19,7 +19,7 @@ extension NetworkService {
     let url = URLFactory.Profile.profile
     let parameters: [String : Any] = [
       "name" : profile.name,
-      "aboutMyself" : profile.aboutMyself,
+      "aboutMyself" : profile.aboutMyself ?? "",
       "topics" : profile.topics.map { topic in
         return topic.id
       }

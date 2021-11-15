@@ -29,7 +29,7 @@ final class ProfileDescriptionViewModel {
   func save(name: String, about: String, topics: Topics) {
     uploadImage()
     let topics = topics.compactMap { topic -> Topic? in
-      if topic.isSelect {
+      if topic.isSelect! {
         return topic
       } else {
         return nil

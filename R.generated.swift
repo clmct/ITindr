@@ -178,8 +178,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 15 images.
+  /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
+    /// Image `ITindr`.
+    static let iTindr = Rswift.ImageResource(bundle: R.hostingBundle, name: "ITindr")
     /// Image `IT’S A MATCH!`.
     static let itsamatcH = Rswift.ImageResource(bundle: R.hostingBundle, name: "IT’S A MATCH!")
     /// Image `ava`.
@@ -190,6 +192,8 @@ struct R: Rswift.Validatable {
     static let defaultAva = Rswift.ImageResource(bundle: R.hostingBundle, name: "defaultAva")
     /// Image `edit`.
     static let edit = Rswift.ImageResource(bundle: R.hostingBundle, name: "edit")
+    /// Image `launchscreen`.
+    static let launchscreen = Rswift.ImageResource(bundle: R.hostingBundle, name: "launchscreen")
     /// Image `like`.
     static let like = Rswift.ImageResource(bundle: R.hostingBundle, name: "like")
     /// Image `logo`.
@@ -210,6 +214,13 @@ struct R: Rswift.Validatable {
     static let tabBar2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBar-2")
     /// Image `tabBar-3`.
     static let tabBar3 = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBar-3")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ITindr", bundle: ..., traitCollection: ...)`
+    static func iTindr(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.iTindr, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "IT’S A MATCH!", bundle: ..., traitCollection: ...)`
@@ -243,6 +254,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "edit", bundle: ..., traitCollection: ...)`
     static func edit(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.edit, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "launchscreen", bundle: ..., traitCollection: ...)`
+    static func launchscreen(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.launchscreen, compatibleWith: traitCollection)
     }
     #endif
 
@@ -561,6 +579,8 @@ struct _R: Rswift.Validatable {
       let name = "LaunchScreen"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "ITindr", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ITindr' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "launchscreen", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'launchscreen' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

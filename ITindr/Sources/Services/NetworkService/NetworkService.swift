@@ -40,6 +40,8 @@ final class NetworkService {
         return
       }
       guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        let response = response as? HTTPURLResponse
+        print(response?.statusCode)
         if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
            let message = json["message"] as? String {
           print(message)
@@ -54,7 +56,9 @@ final class NetworkService {
         DispatchQueue.main.async {
           completion(.success(jsonObject))
         }
-      } catch {
+        print(data)
+      } catch let error {
+        dump(error)
         DispatchQueue.main.async {
           completion(.failure(.json))
         }
@@ -81,8 +85,11 @@ final class NetworkService {
       urlRequest.setValue(value, forHTTPHeaderField: key.rawValue)
     }
     
-    let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-    urlRequest.httpBody = httpBody
+    if parameters.count > 0 {
+      let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+      urlRequest.httpBody = httpBody
+    }
+    
     dump(urlRequest)
     return urlRequest
   }
