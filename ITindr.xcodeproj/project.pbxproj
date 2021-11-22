@@ -18,6 +18,11 @@
 		8B295345270ED78600AC3DA7 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295344270ED78600AC3DA7 /* WelcomeViewModel.swift */; };
 		8B295348270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */; };
 		8B29534A270EEDCD00AC3DA7 /* AvatarComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B295349270EEDCD00AC3DA7 /* AvatarComponentView.swift */; };
+		8BB673CB274B93750052A638 /* ProfileDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB673C7274B93750052A638 /* ProfileDB+CoreDataClass.swift */; };
+		8BB673CC274B93750052A638 /* ProfileDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB673C8274B93750052A638 /* ProfileDB+CoreDataProperties.swift */; };
+		8BB673CD274B93750052A638 /* TopicDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB673C9274B93750052A638 /* TopicDB+CoreDataClass.swift */; };
+		8BB673CE274B93750052A638 /* TopicDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB673CA274B93750052A638 /* TopicDB+CoreDataProperties.swift */; };
+		8BB673D0274B9E310052A638 /* EntitiesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB673CF274B9E310052A638 /* EntitiesExtensions.swift */; };
 		B2081F462741716F00CF351C /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2081F452741716F00CF351C /* PeopleViewController.swift */; };
 		B21BF28027417FEC00FFB011 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21BF27F27417FEC00FFB011 /* CustomCollectionViewLayout.swift */; };
 		B221E39D27421EAF0083498F /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B221E39C27421EAF0083498F /* PeopleViewModel.swift */; };
@@ -105,6 +110,11 @@
 		8B295344270ED78600AC3DA7 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		8B295347270EECAE00AC3DA7 /* ProfileDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDescriptionViewController.swift; sourceTree = "<group>"; };
 		8B295349270EEDCD00AC3DA7 /* AvatarComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarComponentView.swift; sourceTree = "<group>"; };
+		8BB673C7274B93750052A638 /* ProfileDB+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileDB+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BB673C8274B93750052A638 /* ProfileDB+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileDB+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BB673C9274B93750052A638 /* TopicDB+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopicDB+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BB673CA274B93750052A638 /* TopicDB+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopicDB+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BB673CF274B9E310052A638 /* EntitiesExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitiesExtensions.swift; sourceTree = "<group>"; };
 		B2081F452741716F00CF351C /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		B214933E271072A30034EF9E /* ProfileDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDescriptionViewModel.swift; sourceTree = "<group>"; };
 		B2149340271074C70034EF9E /* ProfileDescriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDescriptionCoordinator.swift; sourceTree = "<group>"; };
@@ -232,6 +242,17 @@
 				B2149340271074C70034EF9E /* ProfileDescriptionCoordinator.swift */,
 			);
 			path = ProfileDescription;
+			sourceTree = "<group>";
+		};
+		8BB673BE274B929C0052A638 /* Entites */ = {
+			isa = PBXGroup;
+			children = (
+				8BB673C7274B93750052A638 /* ProfileDB+CoreDataClass.swift */,
+				8BB673C8274B93750052A638 /* ProfileDB+CoreDataProperties.swift */,
+				8BB673C9274B93750052A638 /* TopicDB+CoreDataClass.swift */,
+				8BB673CA274B93750052A638 /* TopicDB+CoreDataProperties.swift */,
+			);
+			path = Entites;
 			sourceTree = "<group>";
 		};
 		9BF7D88E28876F7741639384 /* Frameworks */ = {
@@ -392,6 +413,8 @@
 		B285501B274B50120032DC6D /* CoreDataService */ = {
 			isa = PBXGroup;
 			children = (
+				8BB673BE274B929C0052A638 /* Entites */,
+				8BB673CF274B9E310052A638 /* EntitiesExtensions.swift */,
 				B285501E274B51450032DC6D /* CoreDataService.swift */,
 				B285501C274B51360032DC6D /* CoreDataStack.swift */,
 				B2855020274B517A0032DC6D /* AppModel.xcdatamodeld */,
@@ -735,6 +758,7 @@
 				8B29533F270ED5A400AC3DA7 /* LoginViewController.swift in Sources */,
 				B2855018274ACD460032DC6D /* AboutUserViewController.swift in Sources */,
 				B2791EEC2742589300738A98 /* CollectionViewCell.swift in Sources */,
+				8BB673D0274B9E310052A638 /* EntitiesExtensions.swift in Sources */,
 				B289D311270B6C1200CE810B /* AppCoordinator.swift in Sources */,
 				B24A3465271CB815002F0E2C /* MessageContentView.swift in Sources */,
 				B22F8745272AFAF100A64451 /* ImagePickerPresentingProtocol.swift in Sources */,
@@ -754,6 +778,7 @@
 				B289D323270B852200CE810B /* UIColor+HEX.swift in Sources */,
 				B289D31B270B787B00CE810B /* ButtonFactory.swift in Sources */,
 				B2D2E9B3272C69F700E849AA /* MatchShowingProtocol.swift in Sources */,
+				8BB673CC274B93750052A638 /* ProfileDB+CoreDataProperties.swift in Sources */,
 				B289D301270B6AF600CE810B /* WelcomeViewController.swift in Sources */,
 				B22F874E272B389B00A64451 /* InterestsComponentView2.swift in Sources */,
 				B2D7C7382721469100FBEB28 /* ProfileDescriptionViewModel.swift in Sources */,
@@ -761,6 +786,7 @@
 				8B295343270ED71000AC3DA7 /* AuthCoordinator.swift in Sources */,
 				8B295341270ED62500AC3DA7 /* LoginViewModel.swift in Sources */,
 				8B295345270ED78600AC3DA7 /* WelcomeViewModel.swift in Sources */,
+				8BB673CD274B93750052A638 /* TopicDB+CoreDataClass.swift in Sources */,
 				B24A344F271C9BA8002F0E2C /* ChatListViewController.swift in Sources */,
 				B22F8741272AF87F00A64451 /* UINavigationController+Alert.swift in Sources */,
 				B285501F274B51450032DC6D /* CoreDataService.swift in Sources */,
@@ -772,12 +798,14 @@
 				8B02BEA12727CA68005669BB /* MainCoordinator.swift in Sources */,
 				B22F873F272AF73600A64451 /* PhotoAlertState.swift in Sources */,
 				B22F8746272AFAF100A64451 /* ImagePickerCoordinator.swift in Sources */,
+				8BB673CB274B93750052A638 /* ProfileDB+CoreDataClass.swift in Sources */,
 				8B1D681F2710403A00782DC7 /* InterestsComponentView.swift in Sources */,
 				B289D313270B6C3600CE810B /* CoordinatorProtocol.swift in Sources */,
 				B221E39D27421EAF0083498F /* PeopleViewModel.swift in Sources */,
 				B285501A274B4CC70032DC6D /* AboutUserViewModel.swift in Sources */,
 				B289D329270B883700CE810B /* Logger.swift in Sources */,
 				B285501D274B51360032DC6D /* CoreDataStack.swift in Sources */,
+				8BB673CE274B93750052A638 /* TopicDB+CoreDataProperties.swift in Sources */,
 				B2FC3DD2271C7CE5003E2817 /* ProfileViewModel.swift in Sources */,
 				B2FC3DD0271C7CE5003E2817 /* ProfileCoordinator.swift in Sources */,
 				B2703F90272479370084924D /* NetworkService.swift in Sources */,

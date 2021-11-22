@@ -31,5 +31,4 @@ final class CoreDataService: CoreDataServiceProtocol {
       }
     }
   }
-  
 }

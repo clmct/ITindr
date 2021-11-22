@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ProfileDB" representedClassName="ProfileDB" syncable="YES">
+        <attribute name="aboutMyself" optional="YES" attributeType="String"/>
+        <attribute name="avatar" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="topics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TopicDB" inverseName="relationship" inverseEntity="TopicDB"/>
+    </entity>
+    <entity name="TopicDB" representedClassName="TopicDB" syncable="YES">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="isSelect" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProfileDB" inverseName="topics" inverseEntity="ProfileDB"/>
+    </entity>
+    <elements>
+        <element name="ProfileDB" positionX="-28.515869140625" positionY="201.9013671875" width="128" height="118"/>
+        <element name="TopicDB" positionX="-40.049560546875" positionY="382.9644165039062" width="128" height="88"/>
+    </elements>
 </model>
