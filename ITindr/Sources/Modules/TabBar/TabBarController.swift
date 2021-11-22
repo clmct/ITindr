@@ -59,6 +59,7 @@ final class MainTabBarCoordinator: CoordinatorProtocol {
     navigationController.setNavigationBarHidden(false, animated: false)
     navigationController.tabBarItem = tabBarItem
     let viewModel = PeopleViewModel(dependencies: appDependency)
+    viewModel.delegate = self
     let vc = PeopleViewController(viewModel: viewModel)
     vc.title = "Люди"
     vc.view.backgroundColor = .green
@@ -112,3 +113,13 @@ extension MainTabBarCoordinator: ChatFlowCoordinatorDelegate {
 extension MainTabBarCoordinator: UsersCoordinatorDelegate {
   
 }
+
+// MARK: - PeopleViewModelDelegate
+extension MainTabBarCoordinator: PeopleViewModelDelegate {
+  func peopleViewModelDidRequestShowAboutUser(_ viewModel: PeopleViewModel) {
+    let viewModel = AboutUserViewModel()
+    let vc = AboutUserViewController(viewModel: viewModel)
+    navigationController.pushViewController(vc, animated: true)
+  }
+}
+

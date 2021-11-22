@@ -61,6 +61,10 @@ extension PeopleViewController: UICollectionViewDelegate, UICollectionViewDataSo
     cell.configure(user: viewModel.people[indexPath.row])
     return cell
   }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    viewModel.showAboutUser()
+  }
 }
 
 extension PeopleViewController: UICollectionViewDelegateFlowLayout {

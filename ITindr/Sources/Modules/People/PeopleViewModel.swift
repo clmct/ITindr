@@ -1,11 +1,15 @@
 import Foundation
 
+protocol PeopleViewModelDelegate: AnyObject {
+  func peopleViewModelDidRequestShowAboutUser(_ viewModel: PeopleViewModel)
+}
+
 final class PeopleViewModel {
   // MARK: - Types
   typealias Dependencies = HasNetworkService
   
   // MARK: - Properties
-  weak var delegate: ProfileViewModelDelegate?
+  weak var delegate: PeopleViewModelDelegate?
   private let dependencies: Dependencies
   var onDidUpdate: VoidClosure?
   var people: Users = []
@@ -27,6 +31,10 @@ final class PeopleViewModel {
         print(error)
       }
     }
+  }
+  
+  func showAboutUser() {
+    delegate?.peopleViewModelDidRequestShowAboutUser(self)
   }
   // MARK: - Actions
   

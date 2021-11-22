@@ -31,6 +31,9 @@ final class UsersViewController: UIViewController, MatchShowingProtocol {
   private let nameLabel: UILabel = {
     let item = UILabel()
     item.text = "Андрей Иванов"
+    item.textColor = .base
+    item.font = .bold24
+    item.textAlignment = .center
     return item
   }()
   
@@ -163,9 +166,15 @@ final class UsersViewController: UIViewController, MatchShowingProtocol {
     avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2
     avatarImageView.layer.masksToBounds = true
     
+    contentView.addSubview(nameLabel)
+    nameLabel.snp.makeConstraints { make in
+      make.top.equalTo(avatarImageView.snp.bottom).offset(30)
+      make.leading.trailing.equalToSuperview()
+    }
+    
     contentView.addSubview(interestsComponentView)
     interestsComponentView.snp.makeConstraints { make in
-      make.top.equalTo(avatarImageView.snp.bottom).offset(16)
+      make.top.equalTo(nameLabel.snp.bottom).offset(16)
       make.leading.trailing.equalToSuperview().inset(40)
     }
     
