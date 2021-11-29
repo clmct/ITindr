@@ -28,3 +28,20 @@ extension ProfileDB {
     return contact
   }
 }
+
+// MARK: - TopicDB
+
+extension TopicDB {
+  convenience init(with context: NSManagedObjectContext, topic: Topic) {
+    self.init(context: context)
+    id = topic.id
+    title = topic.title
+  }
+  
+  func getModel() -> Topic {
+    let contact = Topic(id: id ?? "",
+                        title: title ?? "",
+                        isSelect: isSelect)
+    return contact
+  }
+}

@@ -23,6 +23,7 @@ final class PeopleViewController: UIViewController {
     setup()
     bindToViewModel()
     viewModel.getPeople()
+    viewModel.updatePeople()
   }
   
   func bindToViewModel() {

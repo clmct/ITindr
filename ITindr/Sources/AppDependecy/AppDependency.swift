@@ -8,6 +8,11 @@ protocol HasUserStorageService {
   var networkService: UserStorageService { get }
 }
 
-final class AppDependency: HasNetworkService {
+protocol HasCoreDataService {
+  var coreDataService: CoreDataService { get }
+}
+
+final class AppDependency: HasNetworkService, HasCoreDataService {
   var networkService: NetworkService = NetworkService()
+  var coreDataService: CoreDataService = CoreDataService()
 }

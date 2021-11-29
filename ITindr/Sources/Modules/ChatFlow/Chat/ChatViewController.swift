@@ -109,8 +109,6 @@ extension ChatViewController: UITableViewDataSource {
     return cell
     
   }
-  
-  
 }
 
 // MARK: UITextFieldDelegate

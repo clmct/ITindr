@@ -6,7 +6,7 @@ protocol PeopleViewModelDelegate: AnyObject {
 
 final class PeopleViewModel {
   // MARK: - Types
-  typealias Dependencies = HasNetworkService
+  typealias Dependencies = HasNetworkService & HasCoreDataService
   
   // MARK: - Properties
   weak var delegate: PeopleViewModelDelegate?
@@ -21,11 +21,25 @@ final class PeopleViewModel {
   }
   
   // MARK: - Public Methods
-  func getPeople() {
+  func updatePeople() {
     dependencies.networkService.getUserList(limit: 40, offset: 20) { result in
       switch result {
       case .success(let response):
-        self.people = response.filter { $0.name != "" }
+        let people = response.filter { $0.name != "" }
+        self.dependencies.coreDataService.savePeople(with: people)
+        self.getPeople()
+        self.onDidUpdate?()
+      case .failure(let error):
+        print(error)
+      }
+    }
+  }
+  
+  func getPeople() {
+    dependencies.coreDataService.getPeople { result in
+      switch result {
+      case .success(let users):
+        self.people = users
         self.onDidUpdate?()
       case .failure(let error):
         print(error)
