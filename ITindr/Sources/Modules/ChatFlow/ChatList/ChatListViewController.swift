@@ -2,7 +2,7 @@ import UIKit
 
 final class ChatListViewController: UIViewController {
   // MARK: - Properties
-  private let viewModel: ChatListViewModelProtocol
+  private var viewModel: ChatListViewModelProtocol
   
   private let tableView = UITableView()
   
@@ -23,6 +23,8 @@ final class ChatListViewController: UIViewController {
     bindToViewModel()
     setupTableView()
     title = "Чаты"
+    viewModel.getList()
+    viewModel.saveChats()
   }
   
   // MARK: - Public Methods
@@ -31,6 +33,10 @@ final class ChatListViewController: UIViewController {
   
   // MARK: - Private Methods
   private func bindToViewModel() {
+    viewModel.onDidUpdate = { [unowned self] in
+      self.tableView.dataSource = viewModel.dataSource
+      self.tableView.reloadData()
+    }
   }
   
   private func setupTableView() {

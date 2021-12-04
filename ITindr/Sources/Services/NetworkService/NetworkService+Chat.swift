@@ -4,12 +4,18 @@ extension NetworkService {
   func getChatList(completion: @escaping (Result<Chats, NetworkError>) -> Void) {
     // limit
     // offset
-    let url = URLFactory.User.user
+    let url = URLFactory.Chat.chat
     let token = TOKEN ?? ""
     let header = [
       HeaderKeys.authorization: HeaderKeys.bearer.rawValue + " \(token)",
     ]
+    let query = [
+      "limit": "\(40)",
+      "offset": "\(20)",
+    ]
+    
     let request = createBaseRequest(url: url,
+                                    query: query,
                                     method: .get,
                                     header: header)
     

@@ -45,3 +45,24 @@ extension TopicDB {
     return contact
   }
 }
+
+// MARK: - ChatDB
+
+extension ChatDB {
+  convenience init(with context: NSManagedObjectContext, chat: ChatListCell) {
+    self.init(context: context)
+    id = chat.id
+    title = chat.title
+    avatar = chat.image
+    lastMessage = chat.description
+    
+  }
+  
+  func getModel() -> ChatListCell {
+    let chat = ChatListCell(id: id,
+                            image: avatar,
+                            title: title ?? "",
+                            description: lastMessage ?? "")
+    return chat
+  }
+}

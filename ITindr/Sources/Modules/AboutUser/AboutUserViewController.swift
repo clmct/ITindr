@@ -29,7 +29,16 @@ final class AboutUserViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationController?.navigationBar.tintColor = .white
     setup()
+    viewModel.onDidUpdate = { [unowned self] in
+      guard let profile = viewModel.profile else { return }
+      self.nameLabel.text = profile.name
+      self.descriptionLabel.text = profile.aboutMyself
+      let url = URL(string: profile.avatar ?? "")
+      self.imageView.kf.setImage(with: url)
+    }
+    viewModel.getInfo()
   }
   
   private func setup() {
@@ -43,6 +52,8 @@ final class AboutUserViewController: UIViewController {
     imageView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
+    
+    imageView.contentMode = .scaleAspectFill
   }
   
   private func setupNameLabel() {
@@ -52,7 +63,6 @@ final class AboutUserViewController: UIViewController {
       make.bottom.equalTo(descriptionLabel.snp.top).offset(-8)
     }
     
-    nameLabel.text = "Андрей Иванов"
     nameLabel.textColor = .base0
     nameLabel.font = .bold24
     nameLabel.textAlignment = .left
@@ -65,7 +75,6 @@ final class AboutUserViewController: UIViewController {
       make.bottom.equalToSuperview().offset(-16)
     }
     
-    descriptionLabel.text = "Люблю программировать на питоне. Люблю изучать питон. Люблю всё, что у..."
     descriptionLabel.textColor = .base0
     descriptionLabel.font = .regular16
     descriptionLabel.textAlignment = .left

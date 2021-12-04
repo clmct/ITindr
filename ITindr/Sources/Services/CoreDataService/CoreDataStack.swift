@@ -29,14 +29,9 @@ final class CoreDataStack: CoreDataStackProtocol {
     setupPersistentContainer()
   }
   
-  // MARK: - Public Methods
-  
-  
   // MARK: - Private Methods
   
   private func setupPersistentContainer() {
-    
-    
     persistentContainer.loadPersistentStores { _, error in
       if let error = error {
         print(error)

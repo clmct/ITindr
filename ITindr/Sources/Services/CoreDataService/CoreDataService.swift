@@ -4,13 +4,18 @@ import CoreData
 protocol CoreDataServiceProtocol {
 }
 
+enum CoreDataError: Error {
+  case notObject
+  case error
+}
+
 final class CoreDataService: CoreDataServiceProtocol {
   // MARK: - Properties
   
   private let coreDataStack: CoreDataStackProtocol = CoreDataStack()
   
   // MARK: - Public Methods
-  func getPeople(completion: @escaping (Result<Users, Error>) -> Void) {
+  func getPeople(completion: @escaping (Result<Users, CoreDataError>) -> Void) {
     let context = coreDataStack.mainContext
     let request = ProfileDB.fetchRequest()
     do {
@@ -20,9 +25,9 @@ final class CoreDataService: CoreDataServiceProtocol {
           return user.getModel()
         }))
       }
-    } catch let error {
+    } catch {
       DispatchQueue.main.async {
-        completion(.failure(error))
+        completion(.failure(.error))
       }
     }
   }
@@ -35,7 +40,27 @@ final class CoreDataService: CoreDataServiceProtocol {
     }
   }
   
-  func getTopics(completion: @escaping (Result<Topics, Error>) -> Void) {
+  func getUser(with id: String, completion: @escaping (Result<Profile, CoreDataError>) -> Void) {
+    let context = coreDataStack.mainContext
+    let request = ProfileDB.fetchRequest()
+    request.predicate = NSPredicate(format: "id == %@", id)
+    do {
+      let people = try context.fetch(request)
+      DispatchQueue.main.async {
+        guard let user = people.first else {
+          completion(.failure(.notObject))
+          return
+        }
+        completion(.success(user.getModel()))
+      }
+    } catch {
+      DispatchQueue.main.async {
+        completion(.failure(.error))
+      }
+    }
+  }
+  
+  func getTopics(completion: @escaping (Result<Topics, CoreDataError>) -> Void) {
     let context = coreDataStack.mainContext
     let request = TopicDB.fetchRequest()
     do {
@@ -45,9 +70,9 @@ final class CoreDataService: CoreDataServiceProtocol {
           return topic.getModel()
         }))
       }
-    } catch let error {
+    } catch {
       DispatchQueue.main.async {
-        completion(.failure(error))
+        completion(.failure(.error))
       }
     }
   }
@@ -56,6 +81,31 @@ final class CoreDataService: CoreDataServiceProtocol {
     performSave { context in
       topics.forEach { topic in
         _ = TopicDB(with: context, topic: topic)
+      }
+    }
+  }
+  
+  func getChats(completion: @escaping (Result<[ChatListCell], CoreDataError>)  -> Void) {
+    let context = coreDataStack.mainContext
+    let request = ChatDB.fetchRequest()
+    do {
+      let topics = try context.fetch(request)
+      DispatchQueue.main.async {
+        completion(.success(topics.map { chat -> ChatListCell in
+          return chat.getModel()
+        }))
+      }
+    } catch {
+      DispatchQueue.main.async {
+        completion(.failure(.error))
+      }
+    }
+  }
+  
+  func saveChats(with chats: [ChatListCell]) {
+    performSave { context in
+      chats.forEach { chat in
+        _ = ChatDB(with: context, chat: chat)
       }
     }
   }

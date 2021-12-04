@@ -64,7 +64,7 @@ extension PeopleViewController: UICollectionViewDelegate, UICollectionViewDataSo
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    viewModel.showAboutUser()
+    viewModel.showAboutUser(index: indexPath.row)
   }
 }
 

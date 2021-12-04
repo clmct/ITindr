@@ -2,7 +2,7 @@
 //  ProfileDB+CoreDataProperties.swift
 //  ITindr
 //
-//  Created by Developer on 22.11.2021.
+//  Created by Almat Kulbaev on 04.12.2021.
 //
 //
 
@@ -16,10 +16,10 @@ extension ProfileDB {
         return NSFetchRequest<ProfileDB>(entityName: "ProfileDB")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var name: String?
     @NSManaged public var aboutMyself: String?
     @NSManaged public var avatar: String?
+    @NSManaged public var id: String?
+    @NSManaged public var name: String?
     @NSManaged public var topics: NSSet?
 
 }

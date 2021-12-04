@@ -1,7 +1,7 @@
 import Foundation
 
 protocol PeopleViewModelDelegate: AnyObject {
-  func peopleViewModelDidRequestShowAboutUser(_ viewModel: PeopleViewModel)
+  func peopleViewModelDidRequestShowAboutUser(_ viewModel: PeopleViewModel, id: String)
 }
 
 final class PeopleViewModel {
@@ -47,8 +47,8 @@ final class PeopleViewModel {
     }
   }
   
-  func showAboutUser() {
-    delegate?.peopleViewModelDidRequestShowAboutUser(self)
+  func showAboutUser(index: Int) {
+    delegate?.peopleViewModelDidRequestShowAboutUser(self, id: people[index].userID)
   }
   // MARK: - Actions
   

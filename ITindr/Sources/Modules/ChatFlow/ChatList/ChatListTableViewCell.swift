@@ -18,7 +18,8 @@ class ChatListTableViewCell: UITableViewCell, ConfigurableProtocol {
   }
   
   func configure(with model: ChatListCell) {
-    chatImageView.image = model.image
+    let url = URL(string: model.image ?? "")
+    chatImageView.kf.setImage(with: url)
     titleLabel.text = model.title
     descriptionLabel.text = model.description
   }

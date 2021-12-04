@@ -20,6 +20,11 @@ final class ChartListTableViewDataSource<Model, Cell: UITableViewCell>: NSObject
     self.onUpdateCell = onUpdateCell
   }
   
+  
+  
+  
+  
+  
   // MARK: - UITableViewDataSource
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

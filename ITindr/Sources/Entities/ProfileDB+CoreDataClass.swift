@@ -2,7 +2,7 @@
 //  ProfileDB+CoreDataClass.swift
 //  ITindr
 //
-//  Created by Developer on 22.11.2021.
+//  Created by Almat Kulbaev on 04.12.2021.
 //
 //
 

@@ -2,7 +2,7 @@
 //  TopicDB+CoreDataProperties.swift
 //  ITindr
 //
-//  Created by Developer on 22.11.2021.
+//  Created by Almat Kulbaev on 04.12.2021.
 //
 //
 
@@ -16,9 +16,9 @@ extension TopicDB {
         return NSFetchRequest<TopicDB>(entityName: "TopicDB")
     }
 
-    @NSManaged public var title: String?
     @NSManaged public var id: String?
     @NSManaged public var isSelect: Bool
+    @NSManaged public var title: String?
     @NSManaged public var relationship: ProfileDB?
 
 }

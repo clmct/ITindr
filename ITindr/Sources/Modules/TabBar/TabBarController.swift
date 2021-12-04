@@ -116,8 +116,8 @@ extension MainTabBarCoordinator: UsersCoordinatorDelegate {
 
 // MARK: - PeopleViewModelDelegate
 extension MainTabBarCoordinator: PeopleViewModelDelegate {
-  func peopleViewModelDidRequestShowAboutUser(_ viewModel: PeopleViewModel) {
-    let viewModel = AboutUserViewModel()
+  func peopleViewModelDidRequestShowAboutUser(_ viewModel: PeopleViewModel, id: String) {
+    let viewModel = AboutUserViewModel(dependencies: appDependency, id: id)
     let vc = AboutUserViewController(viewModel: viewModel)
     navigationController.pushViewController(vc, animated: true)
   }

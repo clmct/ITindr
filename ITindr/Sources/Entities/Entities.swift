@@ -56,7 +56,7 @@ struct Topic: Codable {
 // MARK: - Chat
 struct Chat: Codable {
     let chat: ChatClass
-    let lastMessage: Message
+    let lastMessage: Message?
 }
 
 // MARK: - ChatClass
